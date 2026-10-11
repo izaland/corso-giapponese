@@ -28,12 +28,14 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-ser
 .btn{padding:12px 18px;border-radius:12px;border:0;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
 .btn-primary{background:var(--red);color:#fff}
 .btn-secondary{background:#fee2e2;color:var(--red)}
+.btn-joker{background:#fff;color:var(--red);border:1px solid var(--red)}
 .hidden{display:none!important}
 .quiz-kana{font-size:72px;text-align:center;font-weight:800}
 .answers{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:16px}
 .answer{padding:14px;border-radius:12px;border:1px solid var(--line);background:#fff;font-size:18px;font-weight:700;cursor:pointer}
 .answer.correct{background:#dcfce7;border-color:#16a34a}
 .answer.wrong{background:#fee2e2;color:var(--red)}
+.answer.excluded{opacity:.35;text-decoration:line-through;pointer-events:none}
 .feedback{min-height:24px;margin-top:12px;font-weight:700}
 .progress{height:8px;background:#fee2e2;border-radius:999px;overflow:hidden;margin-bottom:16px}
 .progress span{display:block;height:100%;background:var(--red);width:0}
@@ -75,7 +77,10 @@ canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
 <div id="quizQuestion"></div>
 <div class="answers" id="quizAnswers"></div>
 <div class="feedback" id="quizFeedback"></div>
-<div class="actions"><button class="btn btn-primary hidden" id="quizNext">Avanti</button></div>
+<div class="actions">
+<button class="btn btn-joker" id="useJoker">Jolly: escludi 2 (3)</button>
+<button class="btn btn-primary hidden" id="quizNext">Avanti</button>
+</div>
 <div class="style-card hidden" id="styleCard">
 <h3>Stili di scrittura</h3>
 <img src="../img/2012110823125017c-56b04df45f9b58b7d0227645.webp" alt="Confronto tra stili di scrittura degli hiragana">
@@ -91,6 +96,15 @@ canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
 <div class="trace-box"><div class="trace-guide" id="traceGuide"></div><canvas id="traceCanvas"></canvas></div>
 <div class="actions"><button class="btn btn-secondary" id="traceClear">Cancella</button><button class="btn btn-primary" id="traceNext">Prossima</button></div>
 </section>
+
+<section class="panel hidden" id="resultPanel">
+<div style="text-align:center">
+<div id="resultEmoji" style="font-size:48px"></div>
+<div id="resultScore" style="font-size:28px;font-weight:800;margin:8px 0"></div>
+<p id="resultText" style="color:var(--muted)"></p>
+<div class="actions" style="justify-content:center"><button class="btn btn-secondary" id="retryQuiz">Riprova</button><a class="btn btn-primary" href="../index.html">Home</a></div>
+</div>
+</section>
 </main>
 
 <script>
@@ -104,11 +118,12 @@ const lessons=[...document.querySelectorAll('.lesson-check')].filter(c=>c.checke
 return lessons.flatMap(l=>KANA[l].map(([k,r])=>({kana:k,romaji:r,lesson:l})));
 }
 function shuffle(a){return [...a].sort(()=>Math.random()-0.5)}
-let pool=[],quizItems=[],quizIndex=0,quizCorrect=0,answered=false;
+let pool=[],quizItems=[],quizIndex=0,quizCorrect=0,answered=false,jokers=3,currentCorrect='',countdown=null;
 function startQuiz(){
 pool=selectedKana();
 if(!pool.length){alert('Seleziona almeno una lezione.');return;}
-quizItems=shuffle(pool).slice(0,Math.min(10,pool.length));quizIndex=0;quizCorrect=0;
+quizItems=shuffle(pool).slice(0,Math.min(10,pool.length));quizIndex=0;quizCorrect=0;jokers=3;
+document.getElementById('useJoker').textContent=`Jolly: escludi 2 (${jokers})`;
 document.getElementById('quizPanel').classList.remove('hidden');
 renderQuiz();
 }
@@ -124,6 +139,7 @@ a.innerHTML='';
 const askKana=Math.random()<.5;
 q.innerHTML=askKana?`<div class="quiz-kana">${item.kana}</div><p style="text-align:center;color:var(--muted)">Quale romaji corrisponde?</p>`:`<div class="quiz-kana">${item.romaji}</div><p style="text-align:center;color:var(--muted)">Quale hiragana corrisponde?</p>`;
 const field=askKana?'romaji':'kana';
+currentCorrect=item[field];
 const wrong=shuffle(pool.filter(x=>x[field]!==item[field])).slice(0,3);
 const options=shuffle([item,...wrong]);
 options.forEach(o=>{const b=document.createElement('button');b.className='answer';b.textContent=o[field];b.onclick=()=>check(b,o[field],item[field]);a.appendChild(b);});
@@ -131,11 +147,27 @@ options.forEach(o=>{const b=document.createElement('button');b.className='answer
 function check(button,chosen,correct){
 if(answered)return;answered=true;
 [...document.querySelectorAll('.answer')].forEach(b=>b.disabled=true);
-if(chosen===correct){quizCorrect++;button.classList.add('correct');document.getElementById('quizFeedback').textContent='Corretto!';}
-else{button.classList.add('wrong');document.getElementById('quizFeedback').textContent=`Non è corretto: la risposta era ${correct}`;}
-document.getElementById('quizNext').classList.remove('hidden');
+if(chosen===correct){quizCorrect++;button.classList.add('correct');document.getElementById('quizFeedback').textContent='Corretto!';startCountdown();}
+else{button.classList.add('wrong');document.getElementById('quizFeedback').textContent=`Non è corretto: la risposta era ${correct}`;document.getElementById('quizNext').classList.remove('hidden');}
 }
-document.getElementById('quizNext').onclick=()=>{quizIndex++;quizIndex>=quizItems.length?alert(`Hai completato il quiz: ${quizCorrect}/${quizItems.length}`):renderQuiz();};
+function startCountdown(){
+const btn=document.getElementById('quizNext');let t=5;btn.textContent=`Avanti (${t})`;btn.classList.remove('hidden');
+countdown=setInterval(()=>{t--;if(t<=0){clearInterval(countdown);countdown=null;nextQuestion();}else{btn.textContent=`Avanti (${t})`;}},1000);
+}
+function nextQuestion(){
+if(countdown){clearInterval(countdown);countdown=null;}
+quizIndex++;quizIndex>=quizItems.length?finishQuiz():renderQuiz();
+}
+function finishQuiz(){
+const score=quizCorrect,total=quizItems.length;
+document.getElementById('resultEmoji').textContent=score===total?'🏆':score>=7?'🎉':score>=5?'👍':'💪';
+document.getElementById('resultScore').textContent=`${score}/${total}`;
+document.getElementById('resultText').textContent=score===total?'Perfetto! Hai memorizzato molto bene queste sillabe.':score>=7?'Ottimo lavoro! Continua così.':score>=5?'Buon risultato: ripeti il quiz per consolidare le sillabe.':'Non preoccuparti: riprova e usa anche il tracing.';
+document.getElementById('quizPanel').classList.add('hidden');
+document.getElementById('resultPanel').classList.remove('hidden');
+}
+document.getElementById('quizNext').onclick=nextQuestion;
+document.getElementById('retryQuiz').onclick=startQuiz;
 let traceItems=[],traceIndex=0,drawing=false,lastX=0,lastY=0;
 const canvas=document.getElementById('traceCanvas'),ctx=canvas.getContext('2d');
 function startTrace(){
@@ -163,6 +195,12 @@ document.getElementById('traceClear').onclick=clearCanvas;
 document.getElementById('traceNext').onclick=()=>{traceIndex++;traceIndex>=traceItems.length?alert('Hai completato tutte le sillabe selezionate.'):renderTrace();};
 document.getElementById('startQuiz').onclick=startQuiz;
 document.getElementById('startTrace').onclick=startTrace;
+document.getElementById('useJoker').onclick=()=>{
+if(jokers<=0||answered)return;
+const buttons=[...document.querySelectorAll('.answer')].filter(b=>b.textContent!==currentCorrect&&!b.classList.contains('excluded'));
+shuffle(buttons).slice(0,2).forEach(b=>b.classList.add('excluded'));
+jokers--;document.getElementById('useJoker').textContent=`Jolly: escludi 2 (${jokers})`;
+};
 window.addEventListener('resize',()=>{if(!document.getElementById('tracePanel').classList.contains('hidden'))resizeCanvas();});
 </script>
 </body>
