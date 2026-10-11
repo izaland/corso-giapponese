@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Pratica Hiragana — a, ka, sa</title>
+<style>
+:root{--red:#b91c1c;--red-dark:#7f1d1d;--ink:#1f2937;--muted:#6b7280;--bg:#f8fafc;--card:#fff;--line:#e5e7eb;--green:#15803d}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;height:100%}
+body{font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic",system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;min-height:100dvh;overscroll-behavior:none}
+.app{flex:1;display:flex;flex-direction:column;max-width:520px;width:100%;margin:0 auto;padding:12px}
+.hidden{display:none!important}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0 12px}
+.brand{font-weight:800;color:var(--red);font-size:17px}
+.brand small{display:block;font-weight:500;color:var(--muted);font-size:11px;margin-top:2px}
+.screen{flex:1;display:flex;flex-direction:column}
+h1{font-size:21px;margin:6px 0 8px}
+p{margin:0 0 12px;line-height:1.45}
+.muted{color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.menu{display:grid;gap:12px;margin-top:14px}
+.menu-btn{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;cursor:pointer}
+.menu-icon{width:48px;height:48px;border-radius:14px;background:#fee2e2;color:var(--red);display:grid;place-items:center;font-size:26px;font-weight:700}
+.menu-title{font-weight:700;font-size:16px}
+.menu-sub{font-size:12.5px;color:var(--muted);margin-top:2px}
+.btn{border:0;border-radius:14px;padding:14px 16px;font-size:15px;font-weight:700;cursor:pointer;width:100%}
+.btn-primary{background:var(--red);color:#fff}
+.btn-secondary{background:#fff;color:var(--red);border:1.5px solid var(--red)}
+.btn[disabled]{opacity:.45}
+.row{display:flex;gap:10px}.row .btn{flex:1}
+.progressbar{height:8px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin:8px 0 16px}.progressbar span{display:block;height:100%;background:var(--red);width:0%;transition:width .2s}
+.quiz-kana{font-size:96px;text-align:center;margin:18px 0 8px;min-height:120px;display:grid;place-items:center}
+.quiz-romaji{font-size:42px;font-weight:800;text-align:center;margin:18px 0 8px;color:var(--red)}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.answer{border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:18px 8px;font-size:22px;font-weight:700;cursor:pointer;color:var(--ink)}
+.answer.kana{font-size:38px}.answer.correct{border-color:var(--green);background:#dcfce7;color:var(--green)}.answer.wrong{border-color:var(--red);background:#fee2e2;color:var(--red-dark)}
+.feedback{min-height:46px;display:grid;place-items:center;text-align:center;font-weight:700;margin-top:12px;border-radius:12px;padding:10px}.feedback.ok{background:#dcfce7;color:var(--green)}.feedback.no{background:#fee2e2;color:var(--red-dark)}
+.score{display:flex;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-weight:700;margin-bottom:12px}
+.trace-guide{position:relative;width:min(88vw,340px);aspect-ratio:1/1;margin:0 auto}
+.trace-guide canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;background:#fff;border:1.5px solid var(--line);border-radius:16px;display:block}
+.guide-kana{position:absolute;inset:0;display:grid;place-items:center;font-size:min(54vw,200px);color:#d9d9d9;pointer-events:none;user-select:none}
+.grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(to right,rgba(100,116,139,.55) 1.5px,transparent 1.5px),linear-gradient(to bottom,rgba(100,116,139,.55) 1.5px,transparent 1.5px);background-size:50% 50%;border-radius:16px}
+.trace-label{text-align:center;font-size:13px;color:var(--muted);margin-bottom:8px}
+.trace-current{text-align:center;font-size:64px;font-weight:800;color:var(--red);line-height:1;margin-bottom:2px}
+.trace-progress{height:10px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin:6px auto 8px;max-width:340px}.trace-progress span{display:block;height:100%;width:0%;background:var(--red);transition:width .18s}
+.result-emoji{font-size:48px;text-align:center;margin-bottom:6px}.result-score{font-size:34px;font-weight:800;text-align:center;color:var(--red)}.result-text{text-align:center;margin:8px 0 18px}
+.badge{display:inline-block;background:#fee2e2;color:var(--red-dark);border-radius:999px;padding:5px 10px;font-size:11.5px;font-weight:700;margin-bottom:10px}
+.footer{padding:12px 0 18px;text-align:center;font-size:11px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="topbar"><div class="brand">Pratica Hiragana<span>Corso di giapponese — Lezione 1</span></div><a href="../index.html" class="btn btn-secondary" style="width:auto;padding:9px 12px;font-size:13px;text-decoration:none">Home</a></div>
+<section id="home" class="screen">
+<div class="card"><span class="badge">Lezione 1</span><h1>Impara gli hiragana<br>a ・ ka ・ sa</h1><p class="muted">Fai pratica con quiz rapidi e traccia i caratteri con il dito.</p><div class="menu"><button class="menu-btn" data-mode="quiz"><div class="menu-icon">?</div><div><div class="menu-title">Quiz hiragana</div><div class="menu-sub">10 domande: riconosci le sillabe</div></div></button><button class="menu-btn" data-mode="trace"><div class="menu-icon">あ</div><div><div class="menu-title">Tracing con il dito</div><div class="menu-sub">Traccia le 15 sillabe delle serie a, ka e sa</div></div></button></div></div>
+<div class="footer">Funziona offline • I progressi restano solo sul tuo telefono</div>
+</section>
+<section id="quiz" class="screen hidden"><div class="progressbar"><span id="quizProgress"></span></div><div class="card"><div class="score"><span>Domanda <span id="quizNumber">1</span>/10</span><span>Corrette: <span id="quizCorrect">0</span></span></div><div id="quizQuestion"></div><div id="quizAnswers" class="answers"></div><div id="quizFeedback" class="feedback"></div><div class="row" style="margin-top:14px"><button id="quizNext" class="btn btn-primary hidden">Avanti</button></div></div></section>
+<section id="trace" class="screen hidden"><div class="card" style="flex:1;display:flex;flex-direction:column"><div class="trace-current" id="traceKana">あ</div><div class="trace-label">Traccia il carattere con il dito sopra la filigrana</div><div class="trace-label" id="traceRomaji">a</div><div class="trace-label">Sillaba <span id="traceCounter">1</span>/15</div><div class="trace-label">Serie: <span id="traceSeries">a</span></div><div class="trace-progress"><span id="traceCoverageBar"></span></div><div class="trace-label" id="traceFeedback">Inizia a tracciare il carattere</div><div class="trace-guide"><div class="grid"></div><div class="guide-kana" id="traceGuide">あ</div><canvas id="traceCanvas"></canvas></div><div class="row" style="margin-top:14px"><button id="traceClear" class="btn btn-secondary">Cancella</button><button id="traceNext" class="btn btn-primary">Prossima</button></div></div></section>
+<section id="result" class="screen hidden"><div class="card" style="text-align:center"><div class="result-emoji" id="resultEmoji">🎉</div><div class="result-score" id="resultScore">0/10</div><p id="resultText"></p><div class="row"><button id="retryQuiz" class="btn btn-secondary">Riprova</button><a href="../index.html" class="btn btn-primary" style="text-decoration:none;display:grid;place-items:center">Home</a></div></div></section>
+</div>
+<script>
+const KANA=[{kana:'あ',romaji:'a',series:'a'},{kana:'い',romaji:'i',series:'a'},{kana:'う',romaji:'u',series:'a'},{kana:'え',romaji:'e',series:'a'},{kana:'お',romaji:'o',series:'a'},{kana:'か',romaji:'ka',series:'ka'},{kana:'き',romaji:'ki',series:'ka'},{kana:'く',romaji:'ku',series:'ka'},{kana:'け',romaji:'ke',series:'ka'},{kana:'こ',romaji:'ko',series:'ka'},{kana:'さ',romaji:'sa',series:'sa'},{kana:'し',romaji:'shi',series:'sa'},{kana:'す',romaji:'su',series:'sa'},{kana:'せ',romaji:'se',series:'sa'},{kana:'そ',romaji:'so',series:'sa'}];
+const screens={home:document.getElementById('home'),quiz:document.getElementById('quiz'),trace:document.getElementById('trace'),result:document.getElementById('result')};
+function show(n){Object.values(screens).forEach(s=>s.classList.add('hidden'));screens[n].classList.remove('hidden');window.scrollTo(0,0);}
+document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>b.dataset.mode==='quiz'?startQuiz():startTrace()));
+let quizItems=[],quizIndex=0,quizCorrect=0,answered=false;
+function startQuiz(){quizItems=[...KANA].sort(()=>Math.random()-0.5).slice(0,10);quizIndex=0;quizCorrect=0;show('quiz');renderQuiz();}
+function makeOptions(correct,field){const pool=KANA.filter(i=>i[field]!==correct[field]);const wrong=[];while(wrong.length<3){const c=pool[Math.floor(Math.random()*pool.length)];if(!wrong.includes(c[field]))wrong.push(c[field]);}return[correct[field],...wrong].sort(()=>Math.random()-0.5);}
+function renderQuiz(){answered=false;const item=quizItems[quizIndex],q=document.getElementById('quizQuestion'),a=document.getElementById('quizAnswers'),f=document.getElementById('quizFeedback'),next=document.getElementById('quizNext');document.getElementById('quizProgress').style.width=(quizIndex/quizItems.length*100)+'%';document.getElementById('quizNumber').textContent=quizIndex+1;document.getElementById('quizCorrect').textContent=quizCorrect;f.textContent='';f.className='feedback';next.classList.add('hidden');a.innerHTML='';if(Math.random()<.5){q.innerHTML=`<div class="quiz-kana">${item.kana}</div><p class="muted" style="text-align:center">Quale romaji corrisponde?</p>`;makeOptions(item,'romaji').forEach(o=>{const b=document.createElement('button');b.className='answer';b.textContent=o;b.addEventListener('click',()=>checkAnswer(b,o,item.romaji));a.appendChild(b);});}else{q.innerHTML=`<div class="quiz-romaji">${item.romaji}</div><p class="muted" style="text-align:center">Quale hiragana corrisponde?</p>`;makeOptions(item,'kana').forEach(o=>{const b=document.createElement('button');b.className='answer kana';b.textContent=o;b.addEventListener('click',()=>checkAnswer(b,o,item.kana));a.appendChild(b);});}}
+function checkAnswer(button,chosen,correct){if(answered)return;answered=true;const f=document.getElementById('quizFeedback'),buttons=[...document.querySelectorAll('.answer')];buttons.forEach(b=>b.disabled=true);if(chosen===correct){quizCorrect++;button.classList.add('correct');f.textContent='Corretto!';f.className='feedback ok';}else{button.classList.add('wrong');buttons.find(b=>b.textContent===correct)?.classList.add('correct');f.textContent=`Non è corretto: la risposta era ${correct}`;f.className='feedback no';}document.getElementById('quizCorrect').textContent=quizCorrect;document.getElementById('quizNext').classList.remove('hidden');}
+document.getElementById('quizNext').addEventListener('click',()=>{quizIndex++;quizIndex>=quizItems.length?finishQuiz():renderQuiz();});
+function finishQuiz(){const s=document.getElementById('resultScore'),t=document.getElementById('resultText'),e=document.getElementById('resultEmoji');s.textContent=`${quizCorrect}/10`;if(quizCorrect===10){e.textContent='🏆';t.textContent='Perfetto! Hai memorizzato molto bene queste sillabe.';}else if(quizCorrect>=7){e.textContent='🎉';t.textContent='Ottimo lavoro! Continua così.';}else if(quizCorrect>=5){e.textContent='👍';t.textContent='Buon risultato: ripeti il quiz per consolidare le sillabe.';}else{e.textContent='💪';t.textContent='Non preoccuparti: riprova e usa anche il tracing.';}show('result');}
+document.getElementById('retryQuiz').addEventListener('click',startQuiz);
+let traceIndex=0,drawing=false,lastX=0,lastY=0,strokeCount=0,covered=new Set();const canvas=document.getElementById('traceCanvas'),ctx=canvas.getContext('2d');
+function resizeCanvas(){const r=canvas.getBoundingClientRect(),d=window.devicePixelRatio||1;canvas.width=r.width*d;canvas.height=r.height*d;ctx.setTransform(d,0,0,d,0,0);ctx.lineWidth=7;ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle='#b91c1c';}
+function startTrace(){traceIndex=0;show('trace');requestAnimationFrame(()=>{resizeCanvas();renderTrace();});}
+function renderTrace(){const i=KANA[traceIndex];strokeCount=0;covered.clear();updateTraceFeedback();document.getElementById('traceKana').textContent=i.kana;document.getElementById('traceRomaji').textContent=i.romaji;document.getElementById('traceSeries').textContent=i.series;document.getElementById('traceCounter').textContent=`${traceIndex+1}/15`;clearCanvas();}
+function clearCanvas(){const r=canvas.getBoundingClientRect();ctx.clearRect(0,0,r.width,r.height);strokeCount=0;covered.clear();updateTraceFeedback();}
+function getPoint(e){const r=canvas.getBoundingClientRect(),t=e.touches?e.touches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top};}
+function markCoverage(p){const r=canvas.getBoundingClientRect(),c=Math.min(2,Math.floor(p.x/r.width*3)),row=Math.min(2,Math.floor(p.y/r.height*3));covered.add(`${row}-${c}`);updateTraceFeedback();}
+function updateTraceFeedback(){const bar=document.getElementById('traceCoverageBar'),msg=document.getElementById('traceFeedback');if(!bar||!msg)return;const cov=Math.round(covered.size/9*100);bar.style.width=cov+'%';if(covered.size>=6&&strokeCount>=2){msg.textContent='Ottimo! Il tracciato copre buona parte del carattere.';msg.style.color='var(--green)';msg.style.fontWeight='700';if(navigator.vibrate)navigator.vibrate(35);}else if(strokeCount===0){msg.textContent='Inizia a tracciare il carattere';msg.style.color='var(--muted)';msg.style.fontWeight='400';}else{msg.textContent=`Tratti: ${strokeCount} • Copertura: ${cov}%`;msg.style.color='var(--red)';msg.style.fontWeight='700';}}
+canvas.addEventListener('pointerdown',e=>{drawing=true;strokeCount++;const p=getPoint(e);lastX=p.x;lastY=p.y;ctx.beginPath();ctx.moveTo(lastX,lastY);canvas.setPointerCapture(e.pointerId);updateTraceFeedback();});
+canvas.addEventListener('pointermove',e=>{if(!drawing)return;const p=getPoint(e);ctx.beginPath();ctx.moveTo(lastX,lastY);ctx.lineTo(p.x,p.y);ctx.stroke();lastX=p.x;lastY=p.y;markCoverage(p);});
+canvas.addEventListener('pointerup',()=>{drawing=false;updateTraceFeedback();});
+canvas.addEventListener('pointercancel',()=>{drawing=false;updateTraceFeedback();});
+document.getElementById('traceClear').addEventListener('click',clearCanvas);
+document.getElementById('traceNext').addEventListener('click',()=>{traceIndex++;if(traceIndex>=KANA.length){alert('Hai completato tutte le 15 sillabe della Lezione 1. Ottimo lavoro!');traceIndex=0;}renderTrace();});
+window.addEventListener('resize',()=>{if(!screens.trace.classList.contains('hidden'))resizeCanvas();});
+</script>
+</body>
+</html>
