@@ -40,6 +40,9 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-ser
 .trace-box{position:relative;aspect-ratio:1;border:1px dashed var(--line);border-radius:16px;background:#fff;overflow:hidden}
 .trace-guide{position:absolute;inset:0;display:grid;place-items:center;font-size:120px;color:#f3f4f6;font-weight:800;pointer-events:none}
 canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+.style-card{margin-top:16px;border:1px solid var(--line);border-left:5px solid var(--red);border-radius:14px;padding:16px;background:#fff}
+.style-card img{width:100%;max-width:520px;display:block;margin:12px auto;border-radius:10px}
+.style-card p{color:var(--muted);font-size:14px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -73,6 +76,12 @@ canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
 <div class="answers" id="quizAnswers"></div>
 <div class="feedback" id="quizFeedback"></div>
 <div class="actions"><button class="btn btn-primary hidden" id="quizNext">Avanti</button></div>
+<div class="style-card hidden" id="styleCard">
+<h3>Stili di scrittura</h3>
+<img src="../img/2012110823125017c-56b04df45f9b58b7d0227645.webp" alt="Confronto tra stili di scrittura degli hiragana">
+<p>Sì, sono entrambe corrette: si tratta semplicemente di stili di scrittura diversi. Confronta la scrittura mostrata a sinistra nell’immagine. I font dei computer usano di solito lo stile in alto; quando si scrive a mano, molte persone preferiscono lo stile in basso, spesso insegnato anche nei corsi di calligrafia. La scelta dipende però dalla preferenza personale: usa quello che ti risulta più facile. Esistono piccole differenze anche per ふ (fu), そ (so) e ゆ (yu).</p>
+<p><small>Fonte: <a href="https://www.thoughtco.com/different-writing-styles-for-the-hiragana-ki-and-sa-2027869" target="_blank" rel="noopener">ThoughtCo — Different writing styles for the hiragana ki and sa</a></small></p>
+</div>
 </section>
 
 <section class="panel hidden" id="tracePanel">
@@ -108,6 +117,8 @@ answered=false;const item=quizItems[quizIndex];
 document.getElementById('quizProgress').style.width=(quizIndex/quizItems.length*100)+'%';
 document.getElementById('quizFeedback').textContent='';
 document.getElementById('quizNext').classList.add('hidden');
+const styleCard=document.getElementById('styleCard');
+['き','さ','そ','ふ'].includes(item.kana)?styleCard.classList.remove('hidden'):styleCard.classList.add('hidden');
 const q=document.getElementById('quizQuestion'),a=document.getElementById('quizAnswers');
 a.innerHTML='';
 const askKana=Math.random()<.5;
