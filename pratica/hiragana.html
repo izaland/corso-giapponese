@@ -83,7 +83,7 @@ canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
 </div>
 <div class="style-card hidden" id="styleCard">
 <h3>Stili di scrittura</h3>
-<img src="../img/2012110823125017c-56b04df45f9b58b7d0227645.webp" alt="Confronto tra stili di scrittura degli hiragana">
+<img id="styleImage" src="../img/2012110823125017c-56b04df45f9b58b7d0227645.webp" alt="Confronto tra stili di scrittura degli hiragana" onerror="this.style.display='none'">
 <p>Sì, sono entrambe corrette: si tratta semplicemente di stili di scrittura diversi. Confronta la scrittura mostrata a sinistra nell’immagine. I font dei computer usano di solito lo stile in alto; quando si scrive a mano, molte persone preferiscono lo stile in basso, spesso insegnato anche nei corsi di calligrafia. La scelta dipende però dalla preferenza personale: usa quello che ti risulta più facile. Esistono piccole differenze anche per ふ (fu), そ (so) e ゆ (yu).</p>
 <p><small>Fonte: <a href="https://www.thoughtco.com/different-writing-styles-for-the-hiragana-ki-and-sa-2027869" target="_blank" rel="noopener">ThoughtCo — Different writing styles for the hiragana ki and sa</a></small></p>
 </div>
@@ -118,7 +118,7 @@ const lessons=[...document.querySelectorAll('.lesson-check')].filter(c=>c.checke
 return lessons.flatMap(l=>KANA[l].map(([k,r])=>({kana:k,romaji:r,lesson:l})));
 }
 function shuffle(a){return [...a].sort(()=>Math.random()-0.5)}
-let pool=[],quizItems=[],quizIndex=0,quizCorrect=0,answered=false,jokers=3,currentCorrect='',countdown=null;
+let pool=[],quizItems=[],quizIndex=0,quizCorrect=0,answered=false,jokers=3,currentCorrect='',currentKana='',countdown=null;
 function startQuiz(){
 pool=selectedKana();
 if(!pool.length){alert('Seleziona almeno una lezione.');return;}
@@ -132,14 +132,13 @@ answered=false;const item=quizItems[quizIndex];
 document.getElementById('quizProgress').style.width=(quizIndex/quizItems.length*100)+'%';
 document.getElementById('quizFeedback').textContent='';
 document.getElementById('quizNext').classList.add('hidden');
-const styleCard=document.getElementById('styleCard');
-['き','さ','そ','ふ'].includes(item.kana)?styleCard.classList.remove('hidden'):styleCard.classList.add('hidden');
+document.getElementById('styleCard').classList.add('hidden');
 const q=document.getElementById('quizQuestion'),a=document.getElementById('quizAnswers');
 a.innerHTML='';
 const askKana=Math.random()<.5;
 q.innerHTML=askKana?`<div class="quiz-kana">${item.kana}</div><p style="text-align:center;color:var(--muted)">Quale romaji corrisponde?</p>`:`<div class="quiz-kana">${item.romaji}</div><p style="text-align:center;color:var(--muted)">Quale hiragana corrisponde?</p>`;
 const field=askKana?'romaji':'kana';
-currentCorrect=item[field];
+currentCorrect=item[field];currentKana=item.kana;
 const wrong=shuffle(pool.filter(x=>x[field]!==item[field])).slice(0,3);
 const options=shuffle([item,...wrong]);
 options.forEach(o=>{const b=document.createElement('button');b.className='answer';b.textContent=o[field];b.onclick=()=>check(b,o[field],item[field]);a.appendChild(b);});
@@ -149,6 +148,7 @@ if(answered)return;answered=true;
 [...document.querySelectorAll('.answer')].forEach(b=>b.disabled=true);
 if(chosen===correct){quizCorrect++;button.classList.add('correct');document.getElementById('quizFeedback').textContent='Corretto!';startCountdown();}
 else{button.classList.add('wrong');document.getElementById('quizFeedback').textContent=`Non è corretto: la risposta era ${correct}`;document.getElementById('quizNext').classList.remove('hidden');}
+if(['き','さ','そ','ふ'].includes(currentKana)){document.getElementById('styleCard').classList.remove('hidden');}
 }
 function startCountdown(){
 const btn=document.getElementById('quizNext');let t=5;btn.textContent=`Avanti (${t})`;btn.classList.remove('hidden');
