@@ -1,3 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Sito del corso di giapponese caricato.');
+  const script = document.createElement('script');
+  script.src = 'js/menu.js';
+  document.body.appendChild(script);
 });
