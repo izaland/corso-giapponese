@@ -95,9 +95,9 @@ const lessons=[...document.querySelectorAll('.lesson-check')].filter(c=>c.checke
 return lessons.flatMap(l=>KANA[l].map(([k,r])=>({kana:k,romaji:r,lesson:l})));
 }
 function shuffle(a){return [...a].sort(()=>Math.random()-0.5)}
-let quizItems=[],quizIndex=0,quizCorrect=0,answered=false;
+let pool=[],quizItems=[],quizIndex=0,quizCorrect=0,answered=false;
 function startQuiz(){
-const pool=selectedKana();
+pool=selectedKana();
 if(!pool.length){alert('Seleziona almeno una lezione.');return;}
 quizItems=shuffle(pool).slice(0,Math.min(10,pool.length));quizIndex=0;quizCorrect=0;
 document.getElementById('quizPanel').classList.remove('hidden');
@@ -113,7 +113,8 @@ a.innerHTML='';
 const askKana=Math.random()<.5;
 q.innerHTML=askKana?`<div class="quiz-kana">${item.kana}</div><p style="text-align:center;color:var(--muted)">Quale romaji corrisponde?</p>`:`<div class="quiz-kana">${item.romaji}</div><p style="text-align:center;color:var(--muted)">Quale hiragana corrisponde?</p>`;
 const field=askKana?'romaji':'kana';
-const options=shuffle([item,...pool.filter(x=>x[field]!==item[field]).slice(0,3)]);
+const wrong=shuffle(pool.filter(x=>x[field]!==item[field])).slice(0,3);
+const options=shuffle([item,...wrong]);
 options.forEach(o=>{const b=document.createElement('button');b.className='answer';b.textContent=o[field];b.onclick=()=>check(b,o[field],item[field]);a.appendChild(b);});
 }
 function check(button,chosen,correct){
