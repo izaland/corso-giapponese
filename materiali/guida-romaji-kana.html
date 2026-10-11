@@ -4,36 +4,188 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guida alla pronuncia del romaji e tabelle kana</title>
-<link rel="stylesheet" href="../css/style.css">
+<style>
+:root{--ink:#1f2937;--accent:#b91c1c;--soft:#f8fafc;--line:#e5e7eb}
+*{box-sizing:border-box}
+body{font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic",Arial,sans-serif;color:var(--ink);margin:0;background:#fff;line-height:1.55}
+header{background:var(--accent);color:#fff;padding:28px 24px;text-align:center}
+header h1{margin:0;font-size:26px}
+header p{margin:8px 0 0;opacity:.92}
+header a{color:#fff;font-weight:700;text-decoration:none}
+main{max-width:1000px;margin:0 auto;padding:24px}
+h2{color:var(--accent);border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:36px}
+h3{margin-top:24px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:center}
+th{background:var(--soft)}
+.kana{font-size:26px}
+.note{background:#fff7ed;border-left:4px solid #f59e0b;padding:12px 14px;border-radius:6px;margin:14px 0}
+.tip{background:#eff6ff;border-left:4px solid #2563eb;padding:12px 14px;border-radius:6px;margin:14px 0}
+ul{padding-left:22px}
+li{margin:5px 0}
+.small{font-size:13px;color:#4b5563}
+.page-nav{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:18px 0}
+.page-nav ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.page-nav a{color:var(--accent);font-weight:700;text-decoration:none}
+.page-nav a:hover{text-decoration:underline}
+.section-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;margin:24px 0;padding-top:12px;border-top:1px solid var(--line)}
+.section-nav a{color:var(--accent);font-weight:700;text-decoration:none}
+.section-nav a:hover{text-decoration:underline}
+@media print {
+@page{size:A4 portrait;margin:14mm 12mm}
+html,body{background:#fff!important;font-size:10.5pt}
+header{background:var(--accent)!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;break-inside:avoid;page-break-inside:avoid}
+main{max-width:none;padding:0}
+h1,h2,h3,h4{break-after:avoid;page-break-after:avoid;break-inside:avoid;page-break-inside:avoid}
+p,ul,ol,li,.note,.tip,.small{break-inside:avoid;page-break-inside:avoid}
+table{width:100%;border-collapse:collapse;break-inside:auto;page-break-inside:auto}
+thead{display:table-header-group}
+tr{break-inside:avoid;page-break-inside:avoid}
+td,th{break-inside:avoid;page-break-inside:avoid}
+h2{break-before:page;page-break-before:always}
+main>h2:first-of-type{break-before:auto;page-break-before:auto}
+h3.derivati-kana{break-before:page;page-break-before:always}
+.page-nav,.section-nav{break-inside:avoid;page-break-inside:avoid}
+}
+</style>
 </head>
 <body>
-<header><h1>Guida alla pronuncia del romaji e tabelle kana</h1><p>Corso di giapponese per principianti</p></header>
-<main>
+<header>
+<h1>Guida alla pronuncia del romaji e tabelle kana</h1>
+<p>Corso di giapponese per principianti — riferimento per la lettura, la pronuncia e la scrittura</p>
 <p><a href="../index.html">← Torna alla home</a></p>
-<h2>1. Pronuncia del romaji</h2>
-<p>Il romaji è la trascrizione dei suoni giapponesi con l’alfabeto latino. Molte sillabe si leggono in modo simile all’italiano: <strong>ka = “ca”</strong>, <strong>mi = “mi”</strong>, <strong>ne = “ne”</strong>.</p>
-<div class="tip"><strong>Eccezioni principali:</strong> shi, chi, tsu, fu, r, j, w e la vocale u.</div>
+</header>
+<main>
+
+<nav class="page-nav" aria-label="Indice della guida">
+<h2>Indice</h2>
+<ul>
+<li><a href="#romaji">1. Guida alla pronuncia del romaji</a></li>
+<li><a href="#hiragana">2. Tabella hiragana</a></li>
+<li><a href="#katakana">3. Tabella katakana</a></li>
+<li><a href="#consultazione">4. Tabella di consultazione rapida</a></li>
+<li><a href="#uso">5. Come usare questa guida</a></li>
+</ul>
+</nav>
+
+<h2 id="romaji">1. Guida alla pronuncia del romaji</h2>
+<p>Il <strong>romaji</strong> è la trascrizione dei suoni giapponesi con l’alfabeto latino. In questa guida usiamo principalmente il sistema <em>Hepburn</em>, quello più comune nei libri di testo, nelle mappe e nei nomi propri.</p>
+<div class="tip"><strong>Regola generale:</strong> molte sillabe si leggono in modo molto simile all’italiano: <strong>ka = “ca”</strong>, <strong>mi = “mi”</strong>, <strong>ne = “ne”</strong>, <strong>to = “to”</strong>. Le eccezioni principali riguardano <strong>shi, chi, tsu, fu, r, j, w</strong> e la vocale <strong>u</strong>.</div>
+
 <h3>Vocali</h3>
 <table>
-<tr><th>Romaji</th><th>Pronuncia</th><th>Esempio</th></tr>
-<tr><td>a</td><td>come in <em>casa</em></td><td>さかな <em>sakana</em></td></tr>
-<tr><td>i</td><td>come in <em>vino</em></td><td>いえ <em>ie</em></td></tr>
-<tr><td>u</td><td>più rilassata della u italiana; può indebolirsi in su, ku, tsu</td><td>うみ <em>umi</em></td></tr>
-<tr><td>e</td><td>come in <em>bene</em></td><td>えき <em>eki</em></td></tr>
-<tr><td>o</td><td>come in <em>otto</em></td><td>おかね <em>okane</em></td></tr>
+<tr><th>Romaji</th><th>Pronuncia per un italiano</th><th>Esempio</th></tr>
+<tr><td><strong>a</strong></td><td>come la <em>a</em> di <em>casa</em></td><td>さかな <em>sakana</em> = pesce</td></tr>
+<tr><td><strong>i</strong></td><td>come la <em>i</em> di <em>vino</em></td><td>いえ <em>ie</em> = casa</td></tr>
+<tr><td><strong>u</strong></td><td>una <em>u</em> più rilassata e meno arrotondata della <em>u</em> italiana; le labbra non si sporgono molto</td><td>うみ <em>umi</em> = mare</td></tr>
+<tr><td><strong>e</strong></td><td>come la <em>e</em> di <em>bene</em></td><td>えき <em>eki</em> = stazione</td></tr>
+<tr><td><strong>o</strong></td><td>come la <em>o</em> di <em>otto</em></td><td>おかね <em>okane</em> = denaro</td></tr>
 </table>
+
+<div class="note"><strong>La “u” giapponese</strong> non è identica alla <em>u</em> italiana: si pronuncia con le labbra poco arrotondate, quasi rilassate. In <strong>su, ku, tsu</strong> e in alcune parole può essere molto breve o quasi scomparsa.</div>
+<ul>
+<li><strong>すし</strong> <em>sushi</em>: spesso si sente qualcosa come “sshi”.</li>
+<li><strong>です</strong> <em>desu</em>: nella parlata quotidiana spesso si sente “des”.</li>
+<li><strong>くつ</strong> <em>kutsu</em>: la <em>u</em> finale può essere appena accennata.</li>
+<li><strong>つくえ</strong> <em>tsukue</em>: la prima <em>u</em> è breve e leggera.</li>
+</ul>
+<p class="small">Per iniziare, pronuncia sempre la <em>u</em>, ma senza esagerare con le labbra: con l’abitudine diventerà naturale ridurla.</p>
+
+<h3>Consonanti: come in italiano</h3>
+<ul>
+<li><strong>k</strong>: come in <em>casa</em>, sempre dura: <em>ka, ki, ku, ke, ko</em>.</li>
+<li><strong>s</strong>: come in <em>sole</em>: <em>sa, su, se, so</em>. Sempre sorda, non dolce come nell’italiano settentrionale, per esempio “ca<strong>sa</strong>”, “ro<strong>sa</strong>”.</li>
+<li><strong>t</strong>: come in <em>tavolo</em>: <em>ta, te, to</em>.</li>
+<li><strong>n</strong>: come in <em>notte</em>.</li>
+<li><strong>m</strong>: come in <em>mare</em>.</li>
+<li><strong>h</strong>: come in <em>hotel</em>, ma più leggera.</li>
+<li><strong>y</strong>: come la <em>i</em> di <em>ieri</em>: <em>ya, yu, yo</em>.</li>
+</ul>
+
 <h3>Eccezioni importanti</h3>
 <table>
-<tr><th>Romaji</th><th>Pronuncia</th><th>Esempio</th></tr>
-<tr><td>shi</td><td>come <em>sci</em> di <em>sciarpa</em></td><td>すし <em>sushi</em></td></tr>
-<tr><td>chi</td><td>come <em>ci</em> di <em>ciao</em></td><td>ちず <em>chizu</em></td></tr>
-<tr><td>tsu</td><td>come <em>ts</em> di <em>pizza</em></td><td>つき <em>tsuki</em></td></tr>
-<tr><td>fu</td><td>una <em>f</em> soffice, tra <em>f</em> e <em>hu</em></td><td>ふじさん <em>Fujisan</em></td></tr>
-<tr><td>r</td><td>tra <em>r</em> e <em>l</em>, mai una <em>r</em> italiana vibrata forte</td><td>さくら <em>sakura</em></td></tr>
-<tr><td>j</td><td>come <em>g</em> di <em>gelato</em></td><td>にほんじん <em>nihonjin</em></td></tr>
-<tr><td>w</td><td>come la <em>u</em> di <em>uovo</em>, molto breve</td><td>わたし <em>watashi</em></td></tr>
+<tr><th>Romaji</th><th>Pronuncia</th><th>Esempi</th></tr>
+<tr><td><strong>shi</strong></td><td>come <em>sci</em> di <em>sciarpa</em></td><td>し <em>shi</em>; すし <em>sushi</em></td></tr>
+<tr><td><strong>chi</strong></td><td>come <em>ci</em> di <em>ciao</em></td><td>ち <em>chi</em>; ちず <em>chizu</em> = mappa</td></tr>
+<tr><td><strong>tsu</strong></td><td>come <em>ts</em> di <em>pizza</em></td><td>つ <em>tsu</em>; つき <em>tsuki</em> = luna</td></tr>
+<tr><td><strong>fu</strong></td><td>una <em>f</em> molto soffice, tra <em>f</em> e <em>hu</em>; non mordere il labbro inferiore come in italiano</td><td>ふ <em>fu</em>; ふじさん <em>Fujisan</em> = Monte Fuji</td></tr>
+<tr><td><strong>r</strong></td><td>una consonante tra <em>r</em> e <em>l</em>, mai una <em>r</em> italiana vibrata forte</td><td>ら <em>ra</em>; さくら <em>sakura</em> = ciliegio</td></tr>
+<tr><td><strong>j</strong></td><td>come <em>g</em> di <em>gelato</em></td><td>じゃ <em>ja</em>; にほんじん <em>nihonjin</em> = giapponese</td></tr>
+<tr><td><strong>w</strong></td><td>come la <em>u</em> di <em>uovo</em>, molto breve</td><td>わ <em>wa</em>; わたし <em>watashi</em> = io</td></tr>
+<tr><td><strong>z</strong></td><td>come <em>s</em> sonora di <em>rosa</em></td><td>ざ <em>za</em>; ぜんぶ <em>zenbu</em> = tutto</td></tr>
+<tr><td><strong>g</strong></td><td>sempre dura, come in <em>gatto</em></td><td>が <em>ga</em>; ぎんこう <em>ginkō</em> = banca</td></tr>
 </table>
-<h2>2. Hiragana</h2>
+
+<div class="note"><strong>Attenzione a “r”:</strong> il suono giapponese non è la <em>r</em> italiana di <em>roma</em>. Si avvicina a una <em>r</em> molto leggera, talvolta percepita come una <em>l</em>. Non insistere sulla vibrazione.</div>
+
+<h3>Vocali lunghe</h3>
+<p>Il giapponese distingue tra vocali <strong>brevi</strong> e vocali <strong>lunghe</strong>. Una vocale lunga dura circa il doppio di una vocale breve e può cambiare completamente il significato di una parola.</p>
+
+<div class="note">
+<strong>Regola pratica:</strong> nel romaji Hepburn la vocale lunga si indica con una piccola linea sopra la lettera, chiamata <em>macron</em>: <strong>ā, ī, ū, ē, ō</strong>. Non si pronuncia come una vocale “diversa”: si prolunga semplicemente la stessa vocale.
+</div>
+
+<table>
+<tr><th>Vocale lunga</th><th>Si scrive</th><th>Pronuncia per un italiano</th><th>Esempio</th></tr>
+<tr><td><strong>ā</strong></td><td>ああ / ー</td><td>una <em>a</em> di <em>casa</em> prolungata</td><td>おばあさん <em>obāsan</em> = nonna</td></tr>
+<tr><td><strong>ī</strong></td><td>いい / ー</td><td>una <em>i</em> di <em>vino</em> prolungata</td><td>おにいさん <em>oniisan</em> = fratello maggiore</td></tr>
+<tr><td><strong>ū</strong></td><td>うう / ー</td><td>una <em>u</em> giapponese prolungata, senza arrotondare molto le labbra</td><td>くうき <em>kūki</em> = aria</td></tr>
+<tr><td><strong>ē</strong></td><td>ええ / ー</td><td>una <em>e</em> di <em>bene</em> prolungata</td><td>ええ <em>ē</em> = sì (informale)</td></tr>
+<tr><td><strong>ō</strong></td><td>おお / おう / ー</td><td>una <em>o</em> di <em>otto</em> prolungata</td><td>とおい <em>tōi</em> = lontano</td></tr>
+</table>
+
+<h4>Come si formano le vocali lunghe</h4>
+<ul>
+<li><strong>ā</strong>: si forma con <strong>あ + あ</strong>. Esempio: おばあさん <em>obāsan</em> = nonna.</li>
+<li><strong>ī</strong>: si forma con <strong>い + い</strong>. Esempio: おにいさん <em>oniisan</em> = fratello maggiore.</li>
+<li><strong>ū</strong>: si forma con <strong>う + う</strong>. Esempio: くうき <em>kūki</em> = aria.</li>
+<li><strong>ē</strong>: di solito si forma con <strong>え + い</strong>, ma si pronuncia come una <em>e</em> lunga. Esempio: せんせい <em>sensei</em> = insegnante.</li>
+<li><strong>ō</strong>: può derivare da <strong>お + お</strong> oppure da <strong>お + う</strong>; in entrambi i casi si pronuncia come una <em>o</em> lunga. Esempi: とおい <em>tōi</em> = lontano; こうこう <em>kōkō</em> = liceo.</li>
+</ul>
+
+<div class="tip">
+<strong>Attenzione:</strong> <strong>えい</strong> si pronuncia normalmente come <em>ē</em>, non come “ei” all’italiana. Allo stesso modo, <strong>おう</strong> si pronuncia come <em>ō</em>, non come “ou”.
+</div>
+
+<h4>Esempi importanti</h4>
+<table>
+<tr><th>Giapponese</th><th>Romaji</th><th>Italiano</th><th>Nota</th></tr>
+<tr><td>おばさん</td><td><em>obasan</em></td><td>zia</td><td>Vocale breve</td></tr>
+<tr><td>おばあさん</td><td><em>obāsan</em></td><td>nonna</td><td>Vocale lunga</td></tr>
+<tr><td>くき</td><td><em>kuki</em></td><td>gambo</td><td>Vocale breve</td></tr>
+<tr><td>くうき</td><td><em>kūki</em></td><td>aria</td><td>Vocale lunga</td></tr>
+<tr><td>ここ</td><td><em>koko</em></td><td>qui</td><td>Vocale breve</td></tr>
+<tr><td>こうこう</td><td><em>kōkō</em></td><td>liceo</td><td>Vocali lunghe</td></tr>
+<tr><td>ゆき</td><td><em>yuki</em></td><td>neve</td><td>Vocale breve</td></tr>
+<tr><td>ゆうき</td><td><em>yūki</em></td><td>coraggio</td><td>Vocale lunga</td></tr>
+</table>
+
+<h4>Il segno ー nel katakana</h4>
+<p>In katakana la vocale lunga è spesso indicata dal trattino orizzontale <strong>ー</strong>, chiamato <em>chōonpu</em>. Si legge prolungando la vocale che lo precede.</p>
+<ul>
+<li>コーヒー <em>kōhī</em> = caffè</li>
+<li>ケーキ <em>kēki</em> = torta</li>
+<li>タクシー <em>takushī</em> = taxi</li>
+<li>パーティー <em>pātī</em> = festa</li>
+<li>スーパー <em>sūpā</em> = supermercato</li>
+</ul>
+
+<p class="small">Quando scrivi a mano o usi una tastiera senza macron, potresti trovare <em>ou</em> invece di <em>ō</em>, oppure <em>aa</em> invece di <em>ā</em>. Sono trascrizioni alternative, ma per leggere correttamente bisogna sempre prolungare la vocale.</p>
+
+<h3>Lettere raddoppiate</h3>
+<p>Una consonante doppia indica una piccola pausa prima del suono:</p>
+<ul>
+<li><strong>きって</strong> <em>kitte</em> = francobollo → “kit-te”, con una breve pausa.</li>
+<li><strong>がっこう</strong> <em>gakkō</em> = scuola → “gak-kō”.</li>
+<li><strong>ちょっと</strong> <em>chotto</em> = un po’ → “chot-to”.</li>
+</ul>
+
+<div class="section-nav">
+<a href="#hiragana">Avanti: Tabella hiragana →</a>
+</div>
+
+<h2 id="hiragana">2. Tabella hiragana</h2>
+<p>La tabella base contiene 46 segni. Le colonne indicano la vocale, le righe la consonante iniziale.</p>
 <table>
 <tr><th>Serie</th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr>
 <tr><th>a</th><td class="kana">あ</td><td class="kana">い</td><td class="kana">う</td><td class="kana">え</td><td class="kana">お</td></tr>
@@ -48,7 +200,56 @@
 <tr><th>wa</th><td class="kana">わ</td><td></td><td class="kana">を</td><td></td><td></td></tr>
 <tr><th>n</th><td class="kana">ん</td><td></td><td></td><td></td><td></td></tr>
 </table>
-<h2>3. Katakana</h2>
+
+<h3 class="derivati-kana">Derivati con dakuten ゛ e handakuten ゜</h3>
+<p>Aggiungendo due piccoli tratti ゛ si ottengono i suoni sonori; con un piccolo cerchio ゜ si ottengono i suoni <em>p</em>.</p>
+<table>
+<tr><th>Base</th><th>Dakuten ゛</th><th>Handakuten ゜</th></tr>
+<tr><td>ka</td><td>ga</td><td>—</td></tr>
+<tr><td>ki</td><td>gi</td><td>—</td></tr>
+<tr><td>ku</td><td>gu</td><td>—</td></tr>
+<tr><td>ke</td><td>ge</td><td>—</td></tr>
+<tr><td>ko</td><td>go</td><td>—</td></tr>
+<tr><td>sa</td><td>za</td><td>—</td></tr>
+<tr><td>shi</td><td>ji</td><td>—</td></tr>
+<tr><td>su</td><td>zu</td><td>—</td></tr>
+<tr><td>se</td><td>ze</td><td>—</td></tr>
+<tr><td>so</td><td>zo</td><td>—</td></tr>
+<tr><td>ta</td><td>da</td><td>—</td></tr>
+<tr><td>chi</td><td>ji</td><td>—</td></tr>
+<tr><td>tsu</td><td>zu</td><td>—</td></tr>
+<tr><td>te</td><td>de</td><td>—</td></tr>
+<tr><td>to</td><td>do</td><td>—</td></tr>
+<tr><td>ha</td><td>ba</td><td>pa</td></tr>
+<tr><td>hi</td><td>bi</td><td>pi</td></tr>
+<tr><td>fu</td><td>bu</td><td>pu</td></tr>
+<tr><td>he</td><td>be</td><td>pe</td></tr>
+<tr><td>ho</td><td>bo</td><td>po</td></tr>
+</table>
+
+<h3>Combinazioni yōon: kya, shu, myō…</h3>
+<p>Le combinazioni si formano con una sillaba in <strong>-i</strong> più una piccola <strong>や, ゆ, よ</strong>. La piccola kana si pronuncia insieme alla sillaba precedente, formando una sola unità.</p>
+<table>
+<tr><th></th><th>-ya</th><th>-yu</th><th>-yo</th></tr>
+<tr><th>ki</th><td>kya</td><td>kyu</td><td>kyo</td></tr>
+<tr><th>shi</th><td>sha</td><td>shu</td><td>sho</td></tr>
+<tr><th>chi</th><td>cha</td><td>chu</td><td>cho</td></tr>
+<tr><th>ni</th><td>nya</td><td>nyu</td><td>nyo</td></tr>
+<tr><th>ri</th><td>rya</td><td>ryu</td><td>ryo</td></tr>
+<tr><th>gi</th><td>gya</td><td>gyu</td><td>gyo</td></tr>
+<tr><th>ji</th><td>ja</td><td>ju</td><td>jo</td></tr>
+<tr><th>bi</th><td>bya</td><td>byu</td><td>byo</td></tr>
+<tr><th>pi</th><td>pya</td><td>pyu</td><td>pyo</td></tr>
+</table>
+<p class="small">Esempi: きょう <em>kyō</em> = oggi; しゅみ <em>shumi</em> = hobby; ちゃ <em>cha</em> = tè; じゅぎょう <em>jugyō</em> = lezione.</p>
+
+<div class="section-nav">
+<a href="#romaji">← Torna al romaji</a>
+<a href="#katakana">Avanti: Tabella katakana →</a>
+</div>
+
+<h2 id="katakana">3. Tabella katakana</h2>
+<p>Il katakana ha gli stessi suoni dell’hiragana, ma si usa soprattutto per nomi stranieri, parole di origine straniera, onomatopee ed enfasi.</p>
 <table>
 <tr><th>Serie</th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr>
 <tr><th>a</th><td class="kana">ア</td><td class="kana">イ</td><td class="kana">ウ</td><td class="kana">エ</td><td class="kana">オ</td></tr>
@@ -63,7 +264,121 @@
 <tr><th>wa</th><td class="kana">ワ</td><td></td><td class="kana">ヲ</td><td></td><td></td></tr>
 <tr><th>n</th><td class="kana">ン</td><td></td><td></td><td></td><td></td></tr>
 </table>
-<p class="small">Guida di consultazione per il corso di giapponese per principianti.</p>
+
+<h3 class="derivati-kana">Derivati con dakuten ゛ e handakuten ゜</h3>
+<p>Anche in katakana i segni derivati hanno la stessa pronuncia degli equivalenti in hiragana.</p>
+<table>
+<tr><th>Base</th><th>Dakuten ゛</th><th>Handakuten ゜</th></tr>
+<tr><td>ka</td><td>ga</td><td>—</td></tr>
+<tr><td>ki</td><td>gi</td><td>—</td></tr>
+<tr><td>ku</td><td>gu</td><td>—</td></tr>
+<tr><td>ke</td><td>ge</td><td>—</td></tr>
+<tr><td>ko</td><td>go</td><td>—</td></tr>
+<tr><td>sa</td><td>za</td><td>—</td></tr>
+<tr><td>shi</td><td>ji</td><td>—</td></tr>
+<tr><td>su</td><td>zu</td><td>—</td></tr>
+<tr><td>se</td><td>ze</td><td>—</td></tr>
+<tr><td>so</td><td>zo</td><td>—</td></tr>
+<tr><td>ta</td><td>da</td><td>—</td></tr>
+<tr><td>chi</td><td>ji</td><td>—</td></tr>
+<tr><td>tsu</td><td>zu</td><td>—</td></tr>
+<tr><td>te</td><td>de</td><td>—</td></tr>
+<tr><td>to</td><td>do</td><td>—</td></tr>
+<tr><td>ha</td><td>ba</td><td>pa</td></tr>
+<tr><td>hi</td><td>bi</td><td>pi</td></tr>
+<tr><td>fu</td><td>bu</td><td>pu</td></tr>
+<tr><td>he</td><td>be</td><td>pe</td></tr>
+<tr><td>ho</td><td>bo</td><td>po</td></tr>
+</table>
+
+<h3>Combinazioni yōon in katakana</h3>
+<p>Le combinazioni funzionano allo stesso modo: una sillaba in <strong>-i</strong> più una piccola <strong>ヤ, ユ, ヨ</strong>.</p>
+<table>
+<tr><th>Romaji</th><th>Katakana</th><th>Romaji</th><th>Katakana</th><th>Romaji</th><th>Katakana</th></tr>
+<tr><td>kya</td><td class="kana">キャ</td><td>kyu</td><td class="kana">キュ</td><td>kyo</td><td class="kana">キョ</td></tr>
+<tr><td>sha</td><td class="kana">シャ</td><td>shu</td><td class="kana">シュ</td><td>sho</td><td class="kana">ショ</td></tr>
+<tr><td>cha</td><td class="kana">チャ</td><td>chu</td><td class="kana">チュ</td><td>cho</td><td class="kana">チョ</td></tr>
+<tr><td>nya</td><td class="kana">ニャ</td><td>nyu</td><td class="kana">ニュ</td><td>nyo</td><td class="kana">ニョ</td></tr>
+<tr><td>rya</td><td class="kana">リャ</td><td>ryu</td><td class="kana">リュ</td><td>ryo</td><td class="kana">リョ</td></tr>
+<tr><td>gya</td><td class="kana">ギャ</td><td>gyu</td><td class="kana">ギュ</td><td>gyo</td><td class="kana">ギョ</td></tr>
+<tr><td>ja</td><td class="kana">ジャ</td><td>ju</td><td class="kana">ジュ</td><td>jo</td><td class="kana">ジョ</td></tr>
+<tr><td>bya</td><td class="kana">ビャ</td><td>byu</td><td class="kana">ビュ</td><td>byo</td><td class="kana">ビョ</td></tr>
+<tr><td>pya</td><td class="kana">ピャ</td><td>pyu</td><td class="kana">ピュ</td><td>pyo</td><td class="kana">ピョ</td></tr>
+</table>
+<p class="small">Esempi: カメラ <em>kamera</em> = macchina fotografica; テレビ <em>terebi</em> = televisione; コーヒー <em>kōhī</em> = caffè; パソコン <em>pasokon</em> = computer.</p>
+
+<div class="section-nav">
+<a href="#hiragana">← Torna all’hiragana</a>
+<a href="#consultazione">Avanti: Consultazione rapida →</a>
+</div>
+
+<h2 id="consultazione">4. Tabella di consultazione rapida</h2>
+<p>Questa tabella affianca hiragana, katakana e romaji per ogni suono base.</p>
+<table>
+<tr><th>Hiragana</th><th>Romaji</th><th>Katakana</th><th>Romaji</th></tr>
+<tr><td class="kana">あ</td><td>a</td><td class="kana">ア</td><td>a</td></tr>
+<tr><td class="kana">い</td><td>i</td><td class="kana">イ</td><td>i</td></tr>
+<tr><td class="kana">う</td><td>u</td><td class="kana">ウ</td><td>u</td></tr>
+<tr><td class="kana">え</td><td>e</td><td class="kana">エ</td><td>e</td></tr>
+<tr><td class="kana">お</td><td>o</td><td class="kana">オ</td><td>o</td></tr>
+<tr><td class="kana">か</td><td>ka</td><td class="kana">カ</td><td>ka</td></tr>
+<tr><td class="kana">き</td><td>ki</td><td class="kana">キ</td><td>ki</td></tr>
+<tr><td class="kana">く</td><td>ku</td><td class="kana">ク</td><td>ku</td></tr>
+<tr><td class="kana">け</td><td>ke</td><td class="kana">ケ</td><td>ke</td></tr>
+<tr><td class="kana">こ</td><td>ko</td><td class="kana">コ</td><td>ko</td></tr>
+<tr><td class="kana">さ</td><td>sa</td><td class="kana">サ</td><td>sa</td></tr>
+<tr><td class="kana">し</td><td>shi</td><td class="kana">シ</td><td>shi</td></tr>
+<tr><td class="kana">す</td><td>su</td><td class="kana">ス</td><td>su</td></tr>
+<tr><td class="kana">せ</td><td>se</td><td class="kana">セ</td><td>se</td></tr>
+<tr><td class="kana">そ</td><td>so</td><td class="kana">ソ</td><td>so</td></tr>
+<tr><td class="kana">た</td><td>ta</td><td class="kana">タ</td><td>ta</td></tr>
+<tr><td class="kana">ち</td><td>chi</td><td class="kana">チ</td><td>chi</td></tr>
+<tr><td class="kana">つ</td><td>tsu</td><td class="kana">ツ</td><td>tsu</td></tr>
+<tr><td class="kana">て</td><td>te</td><td class="kana">テ</td><td>te</td></tr>
+<tr><td class="kana">と</td><td>to</td><td class="kana">ト</td><td>to</td></tr>
+<tr><td class="kana">な</td><td>na</td><td class="kana">ナ</td><td>na</td></tr>
+<tr><td class="kana">に</td><td>ni</td><td class="kana">ニ</td><td>ni</td></tr>
+<tr><td class="kana">ぬ</td><td>nu</td><td class="kana">ヌ</td><td>nu</td></tr>
+<tr><td class="kana">ね</td><td>ne</td><td class="kana">ネ</td><td>ne</td></tr>
+<tr><td class="kana">の</td><td>no</td><td class="kana">ノ</td><td>no</td></tr>
+<tr><td class="kana">は</td><td>ha</td><td class="kana">ハ</td><td>ha</td></tr>
+<tr><td class="kana">ひ</td><td>hi</td><td class="kana">ヒ</td><td>hi</td></tr>
+<tr><td class="kana">ふ</td><td>fu</td><td class="kana">フ</td><td>fu</td></tr>
+<tr><td class="kana">へ</td><td>he</td><td class="kana">ヘ</td><td>he</td></tr>
+<tr><td class="kana">ほ</td><td>ho</td><td class="kana">ホ</td><td>ho</td></tr>
+<tr><td class="kana">ま</td><td>ma</td><td class="kana">マ</td><td>ma</td></tr>
+<tr><td class="kana">み</td><td>mi</td><td class="kana">ミ</td><td>mi</td></tr>
+<tr><td class="kana">む</td><td>mu</td><td class="kana">ム</td><td>mu</td></tr>
+<tr><td class="kana">め</td><td>me</td><td class="kana">メ</td><td>me</td></tr>
+<tr><td class="kana">も</td><td>mo</td><td class="kana">モ</td><td>mo</td></tr>
+<tr><td class="kana">や</td><td>ya</td><td class="kana">ヤ</td><td>ya</td></tr>
+<tr><td class="kana">ゆ</td><td>yu</td><td class="kana">ユ</td><td>yu</td></tr>
+<tr><td class="kana">よ</td><td>yo</td><td class="kana">ヨ</td><td>yo</td></tr>
+<tr><td class="kana">ら</td><td>ra</td><td class="kana">ラ</td><td>ra</td></tr>
+<tr><td class="kana">り</td><td>ri</td><td class="kana">リ</td><td>ri</td></tr>
+<tr><td class="kana">る</td><td>ru</td><td class="kana">ル</td><td>ru</td></tr>
+<tr><td class="kana">れ</td><td>re</td><td class="kana">レ</td><td>re</td></tr>
+<tr><td class="kana">ろ</td><td>ro</td><td class="kana">ロ</td><td>ro</td></tr>
+<tr><td class="kana">わ</td><td>wa</td><td class="kana">ワ</td><td>wa</td></tr>
+<tr><td class="kana">を</td><td>wo/o</td><td class="kana">ヲ</td><td>wo/o</td></tr>
+<tr><td class="kana">ん</td><td>n</td><td class="kana">ン</td><td>n</td></tr>
+</table>
+
+<div class="section-nav">
+<a href="#katakana">← Torna al katakana</a>
+<a href="#uso">Avanti: Come usare questa guida →</a>
+</div>
+
+<h2 id="uso">5. Come usare questa guida</h2>
+<ul>
+<li>Prima impara le cinque vocali: <strong>a, i, u, e, o</strong>.</li>
+<li>Poi aggiungi una serie alla volta: <strong>ka, sa, ta, na…</strong></li>
+<li>Leggi sempre ad alta voce: in giapponese la pronuncia è molto regolare.</li>
+<li>Usa il romaji come supporto iniziale, ma prova presto a leggere direttamente hiragana e katakana.</li>
+<li>Attenzione alle vocali lunghe e alle consonanti doppie: sono parte della parola.</li>
+</ul>
+
+<p class="small">Documento di riferimento per il corso di giapponese per principianti a opera di Davide Chiaramonte e Perplexity AI.</p>
 </main>
 </body>
 </html>
