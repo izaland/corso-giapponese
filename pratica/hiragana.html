@@ -110,6 +110,7 @@ canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
 <button class="btn btn-secondary" id="traceReset">Reset</button>
 <button class="btn btn-primary" id="traceNext">Prossima</button>
 <button class="btn btn-secondary" id="downloadSvg">Scarica tutti gli SVG</button>
+<button class="btn btn-secondary" id="clearAll">Cancella tutti i tracciati</button>
 </div>
 <input class="name-input" id="studentName" placeholder="Inserisci il tuo nome">
 <button class="btn btn-primary" id="sendMail">Invia al sensei</button>
@@ -226,12 +227,16 @@ const rows=Math.ceil(sessionTraces.length/cols);
 const width=cols*cell+(cols-1)*gap,height=rows*cell+(rows-1)*gap;
 let content='';
 sessionTraces.forEach((t,i)=>{const x=(i%cols)*(cell+gap),y=Math.floor(i/cols)*(cell+gap);content+=`<g transform="translate(${x},${y})">${t.svg.replace('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">','').replace('</svg>','')}</g>`;});
-return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}"><rect width="${width}" height="${height}" fill="#fff"/>${content}</svg>`;
+const now=new Date();
+const dateStr=now.toLocaleString('it-IT');
+const name=document.getElementById('studentName').value.trim()||'Studente';
+return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height+80}" width="${width}" height="${height+80}"><rect width="${width}" height="${height+80}" fill="#fff"/><text x="20" y="40" font-size="28" font-weight="700" fill="#1f2937">Tracciati hiragana di ${name}</text><text x="20" y="70" font-size="18" fill="#6b7280">${dateStr}</text><g transform="translate(0,80)">${content}</g></svg>`;
 }
 document.getElementById('downloadSvg').onclick=()=>{
 if(!sessionTraces.length){alert('Nessun tracciato da scaricare.');return;}
 const svg=buildCompositeSVG();const blob=new Blob([svg],{type:'image/svg+xml'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='tracciati-hiragana.svg';a.click();
 };
+document.getElementById('clearAll').onclick=()=>{sessionTraces=[];alert('Tutti i tracciati della sessione sono stati cancellati.');};
 document.getElementById('sendMail').onclick=()=>{
 const name=document.getElementById('studentName').value.trim();
 if(!name){alert('Inserisci il tuo nome.');return;}
