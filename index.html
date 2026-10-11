@@ -6,43 +6,77 @@
 <title>Corso di giapponese per principianti</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/menu.css">
+<style>
+:root{--red:#b91c1c;--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--bg:#f8fafc}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+.hero{background:linear-gradient(135deg,#7f1d1d,#b91c1c);color:#fff;padding:64px 24px;text-align:center}
+.hero h1{margin:0 0 12px;font-size:clamp(32px,5vw,52px);line-height:1.1}
+.hero p{margin:0 auto;max-width:640px;font-size:18px;opacity:.92}
+.hero .cta{display:inline-block;margin-top:24px;padding:12px 22px;border-radius:999px;background:#fff;color:var(--red);font-weight:700;text-decoration:none}
+.container{max-width:1080px;margin:0 auto;padding:40px 20px 64px}
+.section-title{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:0 0 20px}
+.section-title h2{margin:0;font-size:26px}
+.section-title p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:8px;box-shadow:0 1px 2px rgba(15,23,42,.04);transition:transform .15s ease,box-shadow .15s ease}
+.card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(15,23,42,.08)}
+.card .num{width:38px;height:38px;border-radius:12px;background:#fee2e2;color:var(--red);display:grid;place-items:center;font-weight:800}
+.card h3{margin:6px 0 4px;font-size:18px}
+.card p{margin:0 0 14px;color:var(--muted);font-size:14px}
+.card a{margin-top:auto;color:var(--red);font-weight:700;text-decoration:none}
+.card a:hover{text-decoration:underline}
+.resources{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.resource{background:#fff;border:1px solid var(--line);border-left:5px solid var(--red);border-radius:14px;padding:20px}
+.resource h3{margin:0 0 6px}
+.resource p{margin:0 0 12px;color:var(--muted)}
+.resource a{color:var(--red);font-weight:700;text-decoration:none}
+footer{padding:28px 20px;text-align:center;color:var(--muted);font-size:14px}
+@media(max-width:520px){.hero{padding:48px 18px}.container{padding:28px 16px 48px}}
+</style>
 </head>
 <body>
-<header>
+<header class="hero">
 <h1>Corso di giapponese<br>per principianti</h1>
-<p>Materiali, quiz e pratica per le lezioni</p>
+<p>Impara gradualmente saluti, presentazioni, hiragana e prime frasi utili, con lezioni, quiz ed esercizi di scrittura.</p>
+<a class="cta" href="lezioni/lezione-01.html">Inizia dalla Lezione 1</a>
 </header>
 
-<nav class="menu">
-<h2>Lezioni</h2>
-<ul>
-<li><a href="lezioni/lezione-01.html">Lezione 1 — Saluti e hiragana a, ka, sa</a></li>
-<li><a href="lezioni/lezione-02.html">Lezione 2</a></li>
-<li><a href="lezioni/lezione-03.html">Lezione 3</a></li>
-<li><a href="lezioni/lezione-04.html">Lezione 4</a></li>
-<li><a href="lezioni/lezione-05.html">Lezione 5</a></li>
-<li><a href="lezioni/lezione-06.html">Lezione 6</a></li>
-<li><a href="lezioni/lezione-07.html">Lezione 7</a></li>
-<li><a href="lezioni/lezione-08.html">Lezione 8</a></li>
-<li><a href="lezioni/lezione-09.html">Lezione 9</a></li>
-<li><a href="lezioni/lezione-10.html">Lezione 10</a></li>
-</ul>
-
-<h2>Altre risorse</h2>
-<ul>
-<li><a href="pratica/hiragana.html">Esercitazione — quiz e tracing</a></li>
-<li><a href="materiali/guida-romaji-kana.html">Guida al romaji, hiragana e katakana</a></li>
-</ul>
-</nav>
-
-<main>
-<div class="card">
-<span class="badge">Lezione 1</span>
-<h2>Saluti e hiragana: a, ka, sa</h2>
-<p>Impara i saluti principali, presentati e inizia con le prime 15 sillabe hiragana.</p>
-<p><a href="lezioni/lezione-01.html">Apri la Lezione 1</a></p>
+<main class="container">
+<section aria-labelledby="lezioni">
+<div class="section-title">
+<h2 id="lezioni">Lezioni</h2>
+<p>Segui il percorso in ordine</p>
 </div>
+<div class="grid">
+<article class="card"><span class="num">1</span><h3>Saluti e hiragana</h3><p>Saluti, presentazione e prime 15 sillabe hiragana.</p><a href="lezioni/lezione-01.html">Apri la lezione</a></article>
+<article class="card"><span class="num">2</span><h3>Lezione 2</h3><p>Contenuto in preparazione.</p><a href="lezioni/lezione-02.html">Apri la lezione</a></article>
+<article class="card"><span class="num">3</span><h3>Lezione 3</h3><p>Contenuto in preparazione.</p><a href="lezioni/lezione-03.html">Apri la lezione</a></article>
+<article class="card"><span class="num">4</span><h3>Lezione 4</h3><p>Contenuto in preparazione.</p><a href="lezioni/lezione-04.html">Apri la lezione</a></article>
+<article class="card"><span class="num">5</span><h3>Lezione 5</h3><p>Contenuto in preparazione.</p><a href="lezioni/lezione-05.html">Apri la lezione</a></article>
+<article class="card"><span class="num">6</span><h3>Lezione 6</h3><p>Contenuto in preparazione.</p><a href="lezioni/lezione-06.html">Apri la lezione</a></article>
+<article class="card"><span class="num">7</span><h3>Lezione 7</h3><p>Contenuto in preparazione.</p><a href="lezioni/lezione-07.html">Apri la lezione</a></article>
+<article class="card"><span class="num">8</span><h3>Lezione 8</h3><p>Contenuto in preparazione.</p><a href="lezioni/lezione-08.html">Apri la lezione</a></article>
+<article class="card"><span class="num">9</span><h3>Lezione 9</h3><p>Contenuto in preparazione.</p><a href="lezioni/lezione-09.html">Apri la lezione</a></article>
+<article class="card"><span class="num">10</span><h3>Lezione 10</h3><p>Contenuto in preparazione.</p><a href="lezioni/lezione-10.html">Apri la lezione</a></article>
+</div>
+</section>
+
+<section aria-labelledby="risorse" style="margin-top:44px">
+<div class="section-title">
+<h2 id="risorse">Altre risorse</h2>
+<p>Pratica e riferimenti rapidi</p>
+</div>
+<div class="resources">
+<article class="resource"><h3>Esercitazione</h3><p>Quiz e tracing per allenarti con hiragana e prime parole.</p><a href="pratica/hiragana.html">Apri l’esercitazione</a></article>
+<article class="resource"><h3>Guida al romaji e kana</h3><p>Pronuncia del romaji e tabelle di hiragana e katakana.</p><a href="materiali/guida-romaji-kana.html">Apri la guida</a></article>
+</div>
+</section>
 </main>
+
+<footer>
+Corso di giapponese per principianti · materiali didattici
+</footer>
 <script src="js/main.js"></script>
 </body>
 </html>
