@@ -190,7 +190,7 @@ document.getElementById('retryQuiz').onclick=startQuiz;
 let traceItems=[],traceIndex=0,drawing=false,lastX=0,lastY=0,strokes=[],sessionTraces=[];
 const canvas=document.getElementById('traceCanvas'),ctx=canvas.getContext('2d');
 function startTrace(){
-traceItems=selectedKana();
+traceItems=shuffle(selectedKana());
 if(!traceItems.length){alert('Seleziona almeno una lezione.');return;}
 traceIndex=0;sessionTraces=[];document.getElementById('tracePanel').classList.remove('hidden');renderTrace();
 }
