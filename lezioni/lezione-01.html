@@ -25,20 +25,20 @@
 </ul>
 
 <h2>1. I saluti</h2>
-<table>
+<table class="tts-words">
 <tr><th>Giapponese</th><th>Romaji</th><th>Italiano</th><th>Uso</th></tr>
-<tr><td>おはようございます</td><td>Ohayō gozaimasu</td><td>Buongiorno</td><td>Formale</td></tr>
-<tr><td>おはよう</td><td>Ohayō</td><td>Buongiorno</td><td>Informale</td></tr>
-<tr><td>こんにちは</td><td>Konnichiwa</td><td>Buongiorno / Ciao</td><td>Durante il giorno</td></tr>
-<tr><td>こんばんは</td><td>Konbanwa</td><td>Buonasera</td><td>Sera</td></tr>
-<tr><td>おやすみなさい</td><td>Oyasuminasai</td><td>Buonanotte</td><td>Prima di dormire</td></tr>
-<tr><td>さようなら</td><td>Sayōnara</td><td>Arrivederci</td><td>Addio più definitivo</td></tr>
-<tr><td>またね</td><td>Mata ne</td><td>A presto</td><td>Informale</td></tr>
-<tr><td>ありがとうございます</td><td>Arigatō gozaimasu</td><td>Grazie</td><td>Formale</td></tr>
-<tr><td>ありがとう</td><td>Arigatō</td><td>Grazie</td><td>Informale</td></tr>
-<tr><td>すみません</td><td>Sumimasen</td><td>Scusi / Mi scusi</td><td>Chiedere attenzione o scusarsi</td></tr>
-<tr><td>はじめまして</td><td>Hajimemashite</td><td>Piacere di conoscerti</td><td>Primo incontro</td></tr>
-<tr><td>よろしくお願いします</td><td>Yoroshiku onegaishimasu</td><td>Piacere / Conto sulla collaborazione</td><td>Presentazione</td></tr>
+<tr><td title="Clicca per ascoltare">おはようございます</td><td>Ohayō gozaimasu</td><td>Buongiorno</td><td>Formale</td></tr>
+<tr><td title="Clicca per ascoltare">おはよう</td><td>Ohayō</td><td>Buongiorno</td><td>Informale</td></tr>
+<tr><td title="Clicca per ascoltare">こんにちは</td><td>Konnichiwa</td><td>Buongiorno / Ciao</td><td>Durante il giorno</td></tr>
+<tr><td title="Clicca per ascoltare">こんばんは</td><td>Konbanwa</td><td>Buonasera</td><td>Sera</td></tr>
+<tr><td title="Clicca per ascoltare">おやすみなさい</td><td>Oyasuminasai</td><td>Buonanotte</td><td>Prima di dormire</td></tr>
+<tr><td title="Clicca per ascoltare">さようなら</td><td>Sayōnara</td><td>Arrivederci</td><td>Addio più definitivo</td></tr>
+<tr><td title="Clicca per ascoltare">またね</td><td>Mata ne</td><td>A presto</td><td>Informale</td></tr>
+<tr><td title="Clicca per ascoltare">ありがとうございます</td><td>Arigatō gozaimasu</td><td>Grazie</td><td>Formale</td></tr>
+<tr><td title="Clicca per ascoltare">ありがとう</td><td>Arigatō</td><td>Grazie</td><td>Informale</td></tr>
+<tr><td title="Clicca per ascoltare">すみません</td><td>Sumimasen</td><td>Scusi / Mi scusi</td><td>Chiedere attenzione o scusarsi</td></tr>
+<tr><td title="Clicca per ascoltare">はじめまして</td><td>Hajimemashite</td><td>Piacere di conoscerti</td><td>Primo incontro</td></tr>
+<tr><td title="Clicca per ascoltare">よろしくお願いします</td><td>Yoroshiku onegaishimasu</td><td>Piacere / Conto sulla collaborazione</td><td>Presentazione</td></tr>
 </table>
 
 <h2>2. Presentarsi</h2>
@@ -285,7 +285,7 @@
 </main>
 <script src="../js/main.js"></script>
 <script>
-document.querySelectorAll('.tts-words td.kana').forEach(td=>{
+document.querySelectorAll('.tts-words td:first-child').forEach(td=>{
   td.style.cursor='pointer';
   td.addEventListener('click',()=>{
     const u=new SpeechSynthesisUtterance(td.textContent.trim());
