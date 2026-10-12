@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   const base = '/corso-giapponese/';
+  const favicon = document.createElement('link');
+  favicon.rel = 'icon';
+  favicon.type = 'image/svg+xml';
+  favicon.href = `${base}img/favicon.svg`;
+  document.head.appendChild(favicon);
+
   const menu = document.createElement('div');
   menu.className = 'site-menu';
   menu.innerHTML = `
