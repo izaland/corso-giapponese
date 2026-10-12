@@ -84,22 +84,22 @@
 </table>
 
 <h2>6. Parole modello</h2>
-<table>
+<table class="tts-words">
 <tr><th>Giapponese</th><th>Romaji</th><th>Italiano</th></tr>
-<tr><td class="kana">あお</td><td>ao</td><td>blu</td></tr>
-<tr><td class="kana">あき</td><td>aki</td><td>autunno</td></tr>
-<tr><td class="kana">いえ</td><td>ie</td><td>casa</td></tr>
-<tr><td class="kana">うみ</td><td>umi</td><td>mare</td></tr>
-<tr><td class="kana">えき</td><td>eki</td><td>stazione</td></tr>
-<tr><td class="kana">おかね</td><td>okane</td><td>denaro</td></tr>
-<tr><td class="kana">かさ</td><td>kasa</td><td>ombrello</td></tr>
-<tr><td class="kana">き</td><td>ki</td><td>albero</td></tr>
-<tr><td class="kana">くつ</td><td>kutsu</td><td>scarpe</td></tr>
-<tr><td class="kana">こえ</td><td>koe</td><td>voce</td></tr>
-<tr><td class="kana">さかな</td><td>sakana</td><td>pesce</td></tr>
-<tr><td class="kana">すし</td><td>sushi</td><td>sushi</td></tr>
-<tr><td class="kana">せかい</td><td>sekai</td><td>mondo</td></tr>
-<tr><td class="kana">そら</td><td>sora</td><td>cielo</td></tr>
+<tr><td class="kana" title="Clicca per ascoltare">あお</td><td>ao</td><td>blu</td></tr>
+<tr><td class="kana" title="Clicca per ascoltare">あき</td><td>aki</td><td>autunno</td></tr>
+<tr><td class="kana" title="Clicca per ascoltare">いえ</td><td>ie</td><td>casa</td></tr>
+<tr><td class="kana" title="Clicca per ascoltare">うみ</td><td>umi</td><td>mare</td></tr>
+<tr><td class="kana" title="Clicca per ascoltare">えき</td><td>eki</td><td>stazione</td></tr>
+<tr><td class="kana" title="Clicca per ascoltare">おかね</td><td>okane</td><td>denaro</td></tr>
+<tr><td class="kana" title="Clicca per ascoltare">かさ</td><td>kasa</td><td>ombrello</td></tr>
+<tr><td class="kana" title="Clicca per ascoltare">き</td><td>ki</td><td>albero</td></tr>
+<tr><td class="kana" title="Clicca per ascoltare">くつ</td><td>kutsu</td><td>scarpe</td></tr>
+<tr><td class="kana" title="Clicca per ascoltare">こえ</td><td>koe</td><td>voce</td></tr>
+<tr><td class="kana" title="Clicca per ascoltare">さかな</td><td>sakana</td><td>pesce</td></tr>
+<tr><td class="kana" title="Clicca per ascoltare">すし</td><td>sushi</td><td>sushi</td></tr>
+<tr><td class="kana" title="Clicca per ascoltare">せかい</td><td>sekai</td><td>mondo</td></tr>
+<tr><td class="kana" title="Clicca per ascoltare">そら</td><td>sora</td><td>cielo</td></tr>
 </table>
 
 <h2>Esercizi</h2>
@@ -284,5 +284,16 @@
 <p class="small">Documento di riferimento per il corso di giapponese per principianti a opera di Davide Chiaramonte e Perplexity AI.</p>
 </main>
 <script src="../js/main.js"></script>
+<script>
+document.querySelectorAll('.tts-words td.kana').forEach(td=>{
+  td.style.cursor='pointer';
+  td.addEventListener('click',()=>{
+    const u=new SpeechSynthesisUtterance(td.textContent.trim());
+    u.lang='ja-JP';
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+  });
+});
+</script>
 </body>
 </html>
