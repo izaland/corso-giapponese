@@ -96,7 +96,7 @@ canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
 </section>
 
 <section class="panel hidden" id="tracePanel">
-<div class="progress"><span id="traceProgress"></span></div>
+<div class="progress"><span id="quizProgress"></span></div>
 <div id="traceKana" style="font-size:64px;text-align:center;font-weight:800"></div>
 <div style="text-align:center;color:var(--muted);margin-bottom:12px"><span id="traceRomaji"></span> · <span id="traceCounter"></span></div>
 <label class="toggle"><input type="checkbox" id="showGuide" checked> Mostra filigrana</label>
@@ -245,7 +245,7 @@ const hour=new Date().getHours();
 const greeting=hour<11?'おはようございます':hour<18?'こんにちは':'こんばんは';
 const subject=encodeURIComponent(`Tracciati hiragana di ${name}`);
 const body=encodeURIComponent(`${greeting}, Sensei.\n\nIn allegato trovi i tracciati SVG delle sillabe esercitate da ${name}.\n\nGrazie.`);
-window.location.href=`mailto:dabikun.89c@gmail.com?subject=${subject}&body=${body}`;
+window.location.href=`mailto:chiaramonte.davide89@gmail.com?subject=${subject}&body=${body}`;
 };
 document.getElementById('startQuiz').onclick=startQuiz;
 document.getElementById('startTrace').onclick=startTrace;
