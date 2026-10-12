@@ -80,6 +80,13 @@ td:last-child{
   color:#4b5563;
 }
 
+.tts-words td:first-child::after{
+  content:" 🔊";
+  font-size:14px;
+  margin-left:6px;
+  opacity:.75;
+}
+
 ol{
   padding-left:24px;
 }
@@ -109,5 +116,9 @@ ul li{
 
   tbody tr:hover{
     background:transparent;
+  }
+
+  .tts-words td:first-child::after{
+    content:"";
   }
 }
