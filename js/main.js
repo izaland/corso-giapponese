@@ -40,4 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
       toggle.textContent = '⋮';
     }
   });
+
+  const footer = document.createElement('footer');
+  footer.style.cssText = 'background:#b91c1c;color:#fff;padding:24px 20px;text-align:center;margin-top:40px';
+  footer.innerHTML = `
+    <div style="font-weight:700">Corso di giapponese per principianti · materiali didattici</div>
+    <div style="margin-top:6px;opacity:.9">© 2026-2026 · Realizzato da Chiaramonte Davide</div>
+    <a href="https://chat.whatsapp.com/ELiD1NmTkKvGf3AxhArQPg?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;padding:10px 18px;border-radius:999px;background:#fff;color:#b91c1c;font-weight:700;text-decoration:none">Contatta il gruppo WhatsApp</a>
+  `;
+  document.body.appendChild(footer);
 });
