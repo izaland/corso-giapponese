@@ -61,3 +61,64 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
   document.body.appendChild(footer);
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.prof-grid .prof-card');
+  if (!cards.length) return;
+  const supported = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+  const status = document.createElement('p');
+  status.className = 'small';
+  status.setAttribute('role', 'status');
+  status.setAttribute('aria-live', 'polite');
+  cards[0].closest('.prof-grid').after(status);
+  if (!supported) {
+    status.textContent = 'Sintesi vocale non disponibile in questo browser.';
+    return;
+  }
+  const synth = window.speechSynthesis;
+  let voices = synth.getVoices();
+  const refreshVoices = () => { voices = synth.getVoices(); };
+  synth.addEventListener('voiceschanged', refreshVoices);
+  const selectVoice = () => {
+    refreshVoices();
+    const japanese = voices.filter(v => /^ja(?:[-_]|$)/i.test(v.lang));
+    // L'API non espone il genere: preferenza basata sui nomi delle voci.
+    const masculine = /\b(ichiro|keita|takumi|otoya|hattori|naoki)\b|一郎|圭太|直樹|男性|\bmale\b/i;
+    return japanese.find(v => masculine.test(v.name)) || japanese.find(v => v.default) || japanese[0];
+  };
+  let activeUtterance = null;
+  cards.forEach(card => {
+    const text = card.querySelector('.jp')?.textContent.trim();
+    const caption = card.querySelector('.prof-cap');
+    if (!text || !caption) return;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'prof-tts';
+    button.textContent = '🔊 Ascolta';
+    button.setAttribute('aria-label', `Ascolta la pronuncia di ${text}`);
+    button.style.cssText = 'align-self:center;margin-top:8px;padding:6px 12px;border:1px solid #f1c7c7;border-radius:999px;background:#fff5f5;color:#7f1d1d;cursor:pointer;font:inherit';
+    button.addEventListener('click', () => {
+      synth.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'ja-JP';
+      utterance.rate = 0.85;
+      utterance.pitch = 1;
+      const voice = selectVoice();
+      if (voice) utterance.voice = voice;
+      activeUtterance = utterance;
+      status.textContent = `Ascolto: ${text}`;
+      utterance.onend = () => {
+        if (activeUtterance !== utterance) return;
+        activeUtterance = null;
+        status.textContent = '';
+      };
+      utterance.onerror = event => {
+        if (activeUtterance !== utterance) return;
+        activeUtterance = null;
+        status.textContent = ['canceled', 'interrupted'].includes(event.error) ? '' : 'Audio non disponibile. Verifica che sul dispositivo sia installata una voce giapponese.';
+      };
+      synth.speak(utterance);
+    });
+    caption.appendChild(button);
+  });
+});
