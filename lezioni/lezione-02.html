@@ -26,6 +26,8 @@ tbody tr:nth-child(even){background:#fff7f7}
 .legend{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0;font-size:14px}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.tts-words td:first-child{cursor:pointer}
+.tts-words td:first-child::after{content:" 🔊";font-size:14px;margin-left:6px;opacity:.75}
 </style>
 </head>
 <body>
@@ -97,12 +99,12 @@ tbody tr:nth-child(even){background:#fff7f7}
 <span><span class="dot" style="background:#059669"></span> Complemento / descrizione</span>
 <span><span class="dot" style="background:#b91c1c"></span> Copula です</span>
 </div>
-<table>
+<table class="tts-words">
 <tr><th>Giapponese</th><th>Romaji</th><th>Italiano</th></tr>
-<tr><td><span class="s">わたし</span> <span class="p">は</span> <span class="c">がくせい</span> <span class="k">です</span>。</td><td>Watashi wa gakusei desu.</td><td>Sono uno studente / una studentessa.</td></tr>
-<tr><td><span class="s">かれ</span> <span class="p">は</span> <span class="c">せんせい</span> <span class="k">です</span>。</td><td>Kare wa sensei desu.</td><td>Lui è un insegnante.</td></tr>
-<tr><td><span class="s">かのじょ</span> <span class="p">は</span> <span class="c">いしゃ</span> <span class="k">です</span>。</td><td>Kanojo wa isha desu.</td><td>Lei è un medico.</td></tr>
-<tr><td><span class="s">これ</span> <span class="p">は</span> <span class="c">ほん</span> <span class="k">です</span>。</td><td>Kore wa hon desu.</td><td>Questo è un libro.</td></tr>
+<tr><td title="Clicca per ascoltare"><span class="s">わたし</span> <span class="p">は</span> <span class="c">がくせい</span> <span class="k">です</span>。</td><td>Watashi wa gakusei desu.</td><td>Sono uno studente / una studentessa.</td></tr>
+<tr><td title="Clicca per ascoltare"><span class="s">かれ</span> <span class="p">は</span> <span class="c">せんせい</span> <span class="k">です</span>。</td><td>Kare wa sensei desu.</td><td>Lui è un insegnante.</td></tr>
+<tr><td title="Clicca per ascoltare"><span class="s">かのじょ</span> <span class="p">は</span> <span class="c">いしゃ</span> <span class="k">です</span>。</td><td>Kanojo wa isha desu.</td><td>Lei è un medico.</td></tr>
+<tr><td title="Clicca per ascoltare"><span class="s">これ</span> <span class="p">は</span> <span class="c">ほん</span> <span class="k">です</span>。</td><td>Kore wa hon desu.</td><td>Questo è un libro.</td></tr>
 </table>
 <p class="small">は si legge “wa” quando funziona da particella del tema.</p>
 
@@ -136,13 +138,13 @@ tbody tr:nth-child(even){background:#fff7f7}
 <span><span class="dot" style="background:#059669"></span> Professione</span>
 <span><span class="dot" style="background:#b91c1c"></span> Copula です</span>
 </div>
-<table>
+<table class="tts-words">
 <tr><th>Giapponese</th><th>Romaji</th><th>Italiano</th></tr>
-<tr><td><span class="s">わたし</span> <span class="p">の</span> <span style="color:#7c3aed;font-weight:700">しごと</span> <span class="p">は</span> <span class="c">かいしゃいん</span> <span class="k">です</span>。</td><td>Watashi no shigoto wa kaishain desu.</td><td>Il mio lavoro è impiegato d’azienda.</td></tr>
-<tr><td><span class="s">わたし</span> <span class="p">の</span> <span style="color:#7c3aed;font-weight:700">しごと</span> <span class="p">は</span> <span class="c">せんせい</span> <span class="k">です</span>。</td><td>Watashi no shigoto wa sensei desu.</td><td>Il mio lavoro è insegnante.</td></tr>
-<tr><td><span class="s">わたし</span> <span class="p">の</span> <span style="color:#7c3aed;font-weight:700">しごと</span> <span class="p">は</span> <span class="c">いしゃ</span> <span class="k">です</span>。</td><td>Watashi no shigoto wa isha desu.</td><td>Il mio lavoro è medico.</td></tr>
-<tr><td><span class="s">わたし</span> <span class="p">の</span> <span style="color:#7c3aed;font-weight:700">しごと</span> <span class="p">は</span> <span class="c">かんごし</span> <span class="k">です</span>。</td><td>Watashi no shigoto wa kangoshi desu.</td><td>Il mio lavoro è infermiere/a.</td></tr>
-<tr><td><span class="s">わたし</span> <span class="p">の</span> <span style="color:#7c3aed;font-weight:700">しごと</span> <span class="p">は</span> <span class="c">うんてんしゃ</span> <span class="k">です</span>。</td><td>Watashi no shigoto wa untensha desu.</td><td>Il mio lavoro è autista.</td></tr>
+<tr><td title="Clicca per ascoltare"><span class="s">わたし</span> <span class="p">の</span> <span style="color:#7c3aed;font-weight:700">しごと</span> <span class="p">は</span> <span class="c">かいしゃいん</span> <span class="k">です</span>。</td><td>Watashi no shigoto wa kaishain desu.</td><td>Il mio lavoro è impiegato d’azienda.</td></tr>
+<tr><td title="Clicca per ascoltare"><span class="s">わたし</span> <span class="p">の</span> <span style="color:#7c3aed;font-weight:700">しごと</span> <span class="p">は</span> <span class="c">せんせい</span> <span class="k">です</span>。</td><td>Watashi no shigoto wa sensei desu.</td><td>Il mio lavoro è insegnante.</td></tr>
+<tr><td title="Clicca per ascoltare"><span class="s">わたし</span> <span class="p">の</span> <span style="color:#7c3aed;font-weight:700">しごと</span> <span class="p">は</span> <span class="c">いしゃ</span> <span class="k">です</span>。</td><td>Watashi no shigoto wa isha desu.</td><td>Il mio lavoro è medico.</td></tr>
+<tr><td title="Clicca per ascoltare"><span class="s">わたし</span> <span class="p">の</span> <span style="color:#7c3aed;font-weight:700">しごと</span> <span class="p">は</span> <span class="c">かんごし</span> <span class="k">です</span>。</td><td>Watashi no shigoto wa kangoshi desu.</td><td>Il mio lavoro è infermiere/a.</td></tr>
+<tr><td title="Clicca per ascoltare"><span class="s">わたし</span> <span class="p">の</span> <span style="color:#7c3aed;font-weight:700">しごと</span> <span class="p">は</span> <span class="c">うんてんしゃ</span> <span class="k">です</span>。</td><td>Watashi no shigoto wa untensha desu.</td><td>Il mio lavoro è autista.</td></tr>
 </table>
 
 <h3>Vocabolario delle professioni</h3>
@@ -207,5 +209,16 @@ tbody tr:nth-child(even){background:#fff7f7}
 <p class="small">Documento di riferimento per il corso di giapponese per principianti a opera di Davide Chiaramonte e Perplexity AI.</p>
 </main>
 <script src="../js/main.js"></script>
+<script>
+document.querySelectorAll('.tts-words td:first-child').forEach(td=>{
+  td.addEventListener('click',()=>{
+    const text=td.textContent.replace('🔊','').trim();
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang='ja-JP';
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+  });
+});
+</script>
 </body>
 </html>
