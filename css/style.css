@@ -12,3 +12,6 @@ ul{padding-left:20px}
 li{margin:6px 0}
 .badge{display:inline-block;background:#fee2e2;color:var(--red-dark);border-radius:999px;padding:5px 10px;font-size:12px;font-weight:700;margin-bottom:8px}
 img{max-width:100%;height:auto;border-radius:12px}
+
+/* Specificita maggiore della regola inline della lezione 2. */
+.prof-grid .prof-card img{display:block;box-sizing:border-box;width:100%;height:160px;max-width:100%;object-fit:contain;object-position:center;padding:12px;background:#fff}
