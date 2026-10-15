@@ -19,6 +19,13 @@ td{padding:11px 12px;border-bottom:1px solid #f3d6d6;vertical-align:top}
 tbody tr:nth-child(even){background:#fff7f7}
 .kana{font-size:24px;font-weight:700;color:#7f1d1d}
 .small{font-size:13px;color:#6b7280;font-style:italic}
+.s{color:#2563eb;font-weight:700}
+.p{color:#6b7280;font-weight:700}
+.c{color:#059669;font-weight:700}
+.k{color:#b91c1c;font-weight:700}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0;font-size:14px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
 </style>
 </head>
 <body>
@@ -84,12 +91,18 @@ tbody tr:nth-child(even){background:#fff7f7}
 
 <h2>2. Frase base: soggetto + copula + verbo</h2>
 <p>In giapponese la frase base segue spesso l’ordine <strong>soggetto + complemento/descrizione + です</strong>.</p>
+<div class="legend">
+<span><span class="dot" style="background:#2563eb"></span> Soggetto</span>
+<span><span class="dot" style="background:#6b7280"></span> Particella</span>
+<span><span class="dot" style="background:#059669"></span> Complemento / descrizione</span>
+<span><span class="dot" style="background:#b91c1c"></span> Copula です</span>
+</div>
 <table>
 <tr><th>Giapponese</th><th>Romaji</th><th>Italiano</th></tr>
-<tr><td>わたしはがくせいです。</td><td>Watashi wa gakusei desu.</td><td>Sono uno studente / una studentessa.</td></tr>
-<tr><td>かれはせんせいです。</td><td>Kare wa sensei desu.</td><td>Lui è un insegnante.</td></tr>
-<tr><td>かのじょはいしゃです。</td><td>Kanojo wa isha desu.</td><td>Lei è un medico.</td></tr>
-<tr><td>これはほんです。</td><td>Kore wa hon desu.</td><td>Questo è un libro.</td></tr>
+<tr><td><span class="s">わたし</span> <span class="p">は</span> <span class="c">がくせい</span> <span class="k">です</span>。</td><td>Watashi wa gakusei desu.</td><td>Sono uno studente / una studentessa.</td></tr>
+<tr><td><span class="s">かれ</span> <span class="p">は</span> <span class="c">せんせい</span> <span class="k">です</span>。</td><td>Kare wa sensei desu.</td><td>Lui è un insegnante.</td></tr>
+<tr><td><span class="s">かのじょ</span> <span class="p">は</span> <span class="c">いしゃ</span> <span class="k">です</span>。</td><td>Kanojo wa isha desu.</td><td>Lei è un medico.</td></tr>
+<tr><td><span class="s">これ</span> <span class="p">は</span> <span class="c">ほん</span> <span class="k">です</span>。</td><td>Kore wa hon desu.</td><td>Questo è un libro.</td></tr>
 </table>
 <p class="small">は si legge “wa” quando funziona da particella del tema.</p>
 
@@ -116,13 +129,20 @@ tbody tr:nth-child(even){background:#fff7f7}
 
 <h2>4. Lavoro e professioni</h2>
 <p>Per parlare del lavoro si usa spesso la struttura <strong>わたしの しごとは …です</strong>.</p>
+<div class="legend">
+<span><span class="dot" style="background:#2563eb"></span> Possessore</span>
+<span><span class="dot" style="background:#6b7280"></span> Particella</span>
+<span><span class="dot" style="background:#7c3aed"></span> Nome</span>
+<span><span class="dot" style="background:#059669"></span> Professione</span>
+<span><span class="dot" style="background:#b91c1c"></span> Copula です</span>
+</div>
 <table>
 <tr><th>Giapponese</th><th>Romaji</th><th>Italiano</th></tr>
-<tr><td>わたしのしごとはかいしゃいんです。</td><td>Watashi no shigoto wa kaishain desu.</td><td>Il mio lavoro è impiegato d’azienda.</td></tr>
-<tr><td>わたしのしごとはせんせいです。</td><td>Watashi no shigoto wa sensei desu.</td><td>Il mio lavoro è insegnante.</td></tr>
-<tr><td>わたしのしごとはいしゃです。</td><td>Watashi no shigoto wa isha desu.</td><td>Il mio lavoro è medico.</td></tr>
-<tr><td>わたしのしごとはかんごしです。</td><td>Watashi no shigoto wa kangoshi desu.</td><td>Il mio lavoro è infermiere/a.</td></tr>
-<tr><td>わたしのしごとはうんてんしゃです。</td><td>Watashi no shigoto wa untensha desu.</td><td>Il mio lavoro è autista.</td></tr>
+<tr><td><span class="s">わたし</span> <span class="p">の</span> <span style="color:#7c3aed;font-weight:700">しごと</span> <span class="p">は</span> <span class="c">かいしゃいん</span> <span class="k">です</span>。</td><td>Watashi no shigoto wa kaishain desu.</td><td>Il mio lavoro è impiegato d’azienda.</td></tr>
+<tr><td><span class="s">わたし</span> <span class="p">の</span> <span style="color:#7c3aed;font-weight:700">しごと</span> <span class="p">は</span> <span class="c">せんせい</span> <span class="k">です</span>。</td><td>Watashi no shigoto wa sensei desu.</td><td>Il mio lavoro è insegnante.</td></tr>
+<tr><td><span class="s">わたし</span> <span class="p">の</span> <span style="color:#7c3aed;font-weight:700">しごと</span> <span class="p">は</span> <span class="c">いしゃ</span> <span class="k">です</span>。</td><td>Watashi no shigoto wa isha desu.</td><td>Il mio lavoro è medico.</td></tr>
+<tr><td><span class="s">わたし</span> <span class="p">の</span> <span style="color:#7c3aed;font-weight:700">しごと</span> <span class="p">は</span> <span class="c">かんごし</span> <span class="k">です</span>。</td><td>Watashi no shigoto wa kangoshi desu.</td><td>Il mio lavoro è infermiere/a.</td></tr>
+<tr><td><span class="s">わたし</span> <span class="p">の</span> <span style="color:#7c3aed;font-weight:700">しごと</span> <span class="p">は</span> <span class="c">うんてんしゃ</span> <span class="k">です</span>。</td><td>Watashi no shigoto wa untensha desu.</td><td>Il mio lavoro è autista.</td></tr>
 </table>
 
 <h3>Vocabolario delle professioni</h3>
