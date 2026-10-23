@@ -1,262 +1,71 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pratica Hiragana</title>
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/menu.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Pratica Hiragana</title>
+<link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/menu.css">
 <style>
-:root{--red:#b91c1c;--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--bg:#f8fafc}
-*{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
-.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;background:#fff;border-bottom:1px solid var(--line)}
-.brand{font-weight:800;font-size:18px}
-.topbar a{color:var(--red);font-weight:700;text-decoration:none}
-.hero{background:linear-gradient(135deg,#7f1d1d,#b91c1c);color:#fff;padding:40px 20px;text-align:center}
-.hero h1{margin:0 0 8px;font-size:clamp(28px,4vw,40px)}
-.hero p{margin:0;opacity:.92}
-.container{max-width:900px;margin:0 auto;padding:28px 20px 56px}
-.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:20px}
-.panel h2{margin:0 0 12px;font-size:20px}
-.lessons{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.lesson{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:12px}
-.lesson input{width:18px;height:18px;accent-color:var(--red)}
-.lesson label{font-weight:600}
-.lesson small{display:block;color:var(--muted);font-weight:400}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
-.btn{padding:12px 18px;border-radius:12px;border:0;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
-.btn-primary{background:var(--red);color:#fff}
-.btn-secondary{background:#fee2e2;color:var(--red)}
-.btn-joker{background:#fff;color:var(--red);border:1px solid var(--red)}
-.hidden{display:none!important}
-.quiz-kana{font-size:72px;text-align:center;font-weight:800}
-.answers{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:16px}
-.answer{padding:14px;border-radius:12px;border:1px solid var(--line);background:#fff;font-size:18px;font-weight:700;cursor:pointer}
-.answer.correct{background:#dcfce7;border-color:#16a34a}
-.answer.wrong{background:#fee2e2;color:var(--red)}
-.answer.excluded{opacity:.35;text-decoration:line-through;pointer-events:none}
-.feedback{min-height:24px;margin-top:12px;font-weight:700}
-.progress{height:8px;background:#fee2e2;border-radius:999px;overflow:hidden;margin-bottom:16px}
-.progress span{display:block;height:100%;background:var(--red);width:0}
-.trace-box{position:relative;aspect-ratio:1;border:1px dashed var(--line);border-radius:16px;background:#fff;overflow:hidden}
-.trace-guide{position:absolute;inset:0;display:grid;place-items:center;font-size:180px;color:#f3f4f6;font-weight:800;pointer-events:none;transition:opacity .2s}
-.trace-box.no-guide .trace-guide{opacity:0}
-.trace-lines{position:absolute;inset:0;pointer-events:none}
-.trace-lines line{stroke:#e5e7eb;stroke-width:2}
-canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
-.style-card{margin-top:16px;border:1px solid var(--line);border-left:5px solid var(--red);border-radius:14px;padding:16px;background:#fff}
-.style-card img{width:100%;max-width:520px;display:block;margin:12px auto;border-radius:10px}
-.style-card p{color:var(--muted);font-size:14px;line-height:1.5}
-.toggle{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-weight:600}
-.toggle input{width:18px;height:18px;accent-color:var(--red)}
-.name-input{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);margin-bottom:12px}
-</style>
-</head>
-<body>
-<header class="topbar">
-<div class="brand">Pratica Hiragana</div>
-<a href="../index.html">Home</a>
-</header>
-
-<section class="hero">
-<h1>Esercitazione Hiragana</h1>
-<p>Scegli le lezioni da includere, poi fai pratica con quiz e tracing.</p>
-</section>
-
+*{box-sizing:border-box}:root{--red:#b91c1c;--muted:#6b7280;--line:#e5e7eb}body{margin:0;background:#f8fafc;color:#1f2937;font-family:system-ui,sans-serif}.topbar{display:flex;justify-content:space-between;padding:14px 20px;background:white;border-bottom:1px solid var(--line)}.brand{font-weight:800}.hero{background:linear-gradient(135deg,#7f1d1d,#b91c1c);color:white;padding:40px 20px;text-align:center}.hero h1{margin:0 0 8px}.container{max-width:900px;margin:auto;padding:28px 20px 56px}.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:20px}.panel h2{margin:0 0 12px}.lessons{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.lesson{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:12px;cursor:pointer}.lesson input,.toggle input{width:18px;height:18px;accent-color:var(--red)}.lesson strong{display:block}.lesson small{display:block;color:var(--muted)}.actions{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}.btn{padding:12px 18px;border-radius:12px;border:0;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}.btn-primary{background:var(--red);color:white}.btn-secondary{background:#fee2e2;color:var(--red)}.btn-joker{background:white;color:var(--red);border:1px solid var(--red)}button:disabled{cursor:default;opacity:.65}.hidden{display:none!important}.quiz-kana{font-size:clamp(42px,10vw,72px);text-align:center;font-weight:800}.answers{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}.answer{padding:14px;border-radius:12px;border:1px solid var(--line);background:white;font-size:18px;font-weight:700;cursor:pointer}.answer.correct{background:#dcfce7;border-color:#16a34a;opacity:1}.answer.wrong{background:#fee2e2;color:var(--red)}.answer.excluded{opacity:.35;text-decoration:line-through;pointer-events:none}.feedback{min-height:24px;margin-top:12px;font-weight:700}.progress{height:8px;background:#fee2e2;border-radius:999px;overflow:hidden;margin-bottom:16px}.progress span{display:block;height:100%;background:var(--red);width:0}.trace-box{position:relative;aspect-ratio:1;border:1px dashed var(--line);border-radius:16px;background:white;overflow:hidden}.trace-guide{position:absolute;inset:0;display:grid;place-items:center;color:#e5e7eb;pointer-events:none;font-weight:800;white-space:nowrap}.trace-box.no-guide .trace-guide{opacity:0}.trace-lines{position:absolute;inset:0;pointer-events:none}.trace-lines line{stroke:#e5e7eb;stroke-width:.5}canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}.style-card{margin-top:16px;border:1px solid var(--line);border-left:5px solid var(--red);border-radius:14px;padding:16px}.style-card img{width:100%;max-width:520px;display:block;margin:auto}.style-card p,.muted{color:var(--muted);font-size:14px}.toggle{display:flex;align-items:center;gap:8px;margin-bottom:12px}.name-input{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;margin-bottom:12px}
+</style></head><body>
+<header class="topbar"><div class="brand">Pratica Hiragana</div><a href="../index.html">Home</a></header>
+<section class="hero"><h1>Esercitazione Hiragana</h1><p>Scegli lezioni e suoni da includere nel quiz e nel tracing.</p></section>
 <main class="container">
-<section class="panel">
-<h2>Scegli le lezioni</h2>
-<div class="lessons">
-<label class="lesson"><input type="checkbox" class="lesson-check" value="1" checked><span><label>Lezione 1</label><small>a, ka, sa</small></span></label>
-<label class="lesson"><input type="checkbox" class="lesson-check" value="2"><span><label>Lezione 2</label><small>ta, na, ha, ma</small></span></label>
-<label class="lesson"><input type="checkbox" class="lesson-check" value="3"><span><label>Lezione 3</label><small>ya, ra, wa, n</small></span></label>
-</div>
-<div class="actions">
-<button class="btn btn-primary" id="startQuiz">Inizia il quiz</button>
-<button class="btn btn-secondary" id="startTrace">Inizia il tracing</button>
-</div>
-</section>
-
-<section class="panel hidden" id="quizPanel">
-<div class="progress"><span id="quizProgress"></span></div>
-<div id="quizQuestion"></div>
-<div class="answers" id="quizAnswers"></div>
-<div class="feedback" id="quizFeedback"></div>
-<div class="actions">
-<button class="btn btn-joker" id="useJoker">Jolly: escludi 2 (3)</button>
-<button class="btn btn-primary hidden" id="quizNext">Avanti</button>
-</div>
-<div class="style-card hidden" id="styleCard">
-<h3>Stili di scrittura</h3>
-<img id="styleImage" src="../img/2012110823125017c-56b04df45f9b58b7d0227645.webp" alt="Confronto tra stili di scrittura degli hiragana" onerror="this.style.display='none'">
-<p>Sì, sono entrambe corrette: si tratta semplicemente di stili di scrittura diversi. Confronta la scrittura mostrata a sinistra nell’immagine. I font dei computer usano di solito lo stile in alto; quando si scrive a mano, molte persone preferiscono lo stile in basso, spesso insegnato anche nei corsi di calligrafia. La scelta dipende però dalla preferenza personale: usa quello che ti risulta più facile. Esistono piccole differenze anche per ふ (fu), そ (so) e ゆ (yu).</p>
-<p><small>Fonte: <a href="https://www.thoughtco.com/different-writing-styles-for-the-hiragana-ki-and-sa-2027869" target="_blank" rel="noopener">ThoughtCo — Different writing styles for the hiragana ki and sa</a></small></p>
-</div>
-</section>
-
-<section class="panel hidden" id="tracePanel">
-<div class="progress"><span id="traceProgress"></span></div>
-<div id="traceKana" style="font-size:64px;text-align:center;font-weight:800"></div>
-<div style="text-align:center;color:var(--muted);margin-bottom:12px"><span id="traceRomaji"></span> · <span id="traceCounter"></span></div>
-<label class="toggle"><input type="checkbox" id="showGuide" checked> Mostra filigrana</label>
-<div class="trace-box" id="traceBox">
-<svg class="trace-lines" viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="50" y1="0" x2="50" y2="100"></line><line x1="0" y1="50" x2="100" y2="50"></line></svg>
-<div class="trace-guide" id="traceGuide"></div>
-<canvas id="traceCanvas"></canvas>
-</div>
-<div class="actions">
-<button class="btn btn-secondary" id="traceClear">Cancella</button>
-<button class="btn btn-secondary" id="traceReset">Reset</button>
-<button class="btn btn-primary" id="traceNext">Prossima</button>
-<button class="btn btn-secondary" id="downloadSvg">Scarica tutti gli SVG</button>
-<button class="btn btn-secondary" id="clearAll">Cancella tutti i tracciati</button>
-</div>
-<input class="name-input" id="studentName" placeholder="Inserisci il tuo nome">
-<button class="btn btn-primary" id="sendMail">Invia al sensei</button>
-</section>
-
-<section class="panel hidden" id="resultPanel">
-<div style="text-align:center">
-<div id="resultEmoji" style="font-size:48px"></div>
-<div id="resultScore" style="font-size:28px;font-weight:800;margin:8px 0"></div>
-<p id="resultText" style="color:var(--muted)"></p>
-<div class="actions" style="justify-content:center"><button class="btn btn-secondary" id="retryQuiz">Riprova</button><a class="btn btn-primary" href="../index.html">Home</a></div>
-</div>
-</section>
-</main>
-
-<script>
+<section class="panel"><h2>Scegli le lezioni</h2><div class="lessons">
+<label class="lesson"><input type="checkbox" class="lesson-check" value="1" checked><span><strong>Lezione 1</strong><small>a, ka, sa</small></span></label>
+<label class="lesson"><input type="checkbox" class="lesson-check" value="2"><span><strong>Lezione 2</strong><small>ta, na, ha, ma</small></span></label>
+<label class="lesson"><input type="checkbox" class="lesson-check" value="3"><span><strong>Lezione 3</strong><small>ya, ra, wa, n</small></span></label>
+<label class="lesson"><input type="checkbox" class="lesson-check" value="dakuon"><span><strong>Dakuon e handakuon</strong><small>ga, za, da, ba, pa · ゛ e ゜</small></span></label>
+<label class="lesson"><input type="checkbox" class="lesson-check" value="yoon"><span><strong>Dittonghi (suoni contratti)</strong><small>Combinazioni con ゃ・ゅ・ょ</small></span></label>
+</div><p class="muted">Le due opzioni aggiuntive includono l’intero gruppo, anche senza selezionare le lezioni di base. La serie pa è handakuon. I filtri si applicano quando avvii o riavvii un’attività.</p><p id="selectionCount" role="status" aria-live="polite"></p><div class="actions"><button class="btn btn-primary" id="startQuiz">Inizia il quiz</button><button class="btn btn-secondary" id="startTrace">Inizia il tracing</button></div></section>
+<section class="panel hidden" id="quizPanel"><div class="progress"><span id="quizProgress"></span></div><div id="quizQuestion"></div><div class="answers" id="quizAnswers"></div><div class="feedback" id="quizFeedback" role="status" aria-live="polite"></div><div class="actions"><button class="btn btn-joker" id="useJoker">Jolly: escludi 2 (3)</button><button class="btn btn-primary hidden" id="quizNext">Avanti</button></div>
+<div class="style-card hidden" id="styleCard"><h3>Stili di scrittura</h3><img src="../img/2012110823125017c-56b04df45f9b58b7d0227645.webp" alt="Confronto fra stili degli hiragana" onerror="this.style.display='none'"><p>Font e scrittura a mano possono mostrare forme diverse, entrambe corrette: in particolare per き e さ, ma anche ふ, そ e ゆ. Confronta gli stili e usa il modello insegnato a lezione.</p><p><a href="https://www.thoughtco.com/different-writing-styles-for-the-hiragana-ki-and-sa-2027869" target="_blank" rel="noopener">Fonte: ThoughtCo — Different writing styles for the hiragana ki and sa</a></p></div></section>
+<section class="panel hidden" id="tracePanel"><div class="progress"><span id="traceProgress"></span></div><div id="traceKana" class="quiz-kana"></div><div style="text-align:center;margin-bottom:12px"><span id="traceRomaji"></span> · <span id="traceCounter"></span></div><label class="toggle"><input type="checkbox" id="showGuide" checked>Mostra filigrana</label><div class="trace-box" id="traceBox"><svg class="trace-lines" viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="50" y1="0" x2="50" y2="100"></line><line x1="0" y1="50" x2="100" y2="50"></line></svg><div class="trace-guide" id="traceGuide"></div><canvas id="traceCanvas" aria-label="Area per tracciare gli hiragana"></canvas></div><p class="muted">Per i suoni contratti traccia entrambi i caratteri: ゃ・ゅ・ょ devono restare piccoli. La filigrana è un riferimento, non una valutazione automatica dell’ordine dei tratti.</p><p id="traceStatus" role="status" aria-live="polite"></p><div class="actions"><button class="btn btn-secondary" id="traceClear">Cancella</button><button class="btn btn-secondary" id="traceReset">Reset</button><button class="btn btn-primary" id="traceNext">Prossima</button><button class="btn btn-secondary" id="downloadSvg">Scarica tutti gli SVG</button><button class="btn btn-secondary" id="clearAll">Cancella tutti i tracciati</button></div><label for="studentName">Nome dello studente</label><input class="name-input" id="studentName" placeholder="Inserisci il tuo nome"><button class="btn btn-primary" id="sendMail">Invia al sensei</button><p class="muted">Scarica gli SVG e allegali manualmente all’email: il pulsante apre un messaggio ma non può aggiungere allegati automaticamente.</p></section>
+<section class="panel hidden" id="resultPanel"><div style="text-align:center"><div id="resultEmoji" style="font-size:48px"></div><div id="resultScore" style="font-size:28px;font-weight:800"></div><p id="resultText"></p><div class="actions" style="justify-content:center"><button class="btn btn-secondary" id="retryQuiz">Riprova</button><a class="btn btn-primary" href="../index.html">Home</a></div></div></section>
+</main><script>
 const KANA={
 1:[['あ','a'],['い','i'],['う','u'],['え','e'],['お','o'],['か','ka'],['き','ki'],['く','ku'],['け','ke'],['こ','ko'],['さ','sa'],['し','shi'],['す','su'],['せ','se'],['そ','so']],
 2:[['た','ta'],['ち','chi'],['つ','tsu'],['て','te'],['と','to'],['な','na'],['に','ni'],['ぬ','nu'],['ね','ne'],['の','no'],['は','ha'],['ひ','hi'],['ふ','fu'],['へ','he'],['ほ','ho'],['ま','ma'],['み','mi'],['む','mu'],['め','me'],['も','mo']],
-3:[['や','ya'],['ゆ','yu'],['よ','yo'],['ら','ra'],['り','ri'],['る','ru'],['れ','re'],['ろ','ro'],['わ','wa'],['を','wo'],['ん','n']]
+3:[['や','ya'],['ゆ','yu'],['よ','yo'],['ら','ra'],['り','ri'],['る','ru'],['れ','re'],['ろ','ro'],['わ','wa'],['を','wo'],['ん','n']],
+dakuon:[['が','ga'],['ぎ','gi'],['ぐ','gu'],['げ','ge'],['ご','go'],['ざ','za'],['じ','ji'],['ず','zu'],['ぜ','ze'],['ぞ','zo'],['だ','da'],['ぢ','ji'],['づ','zu'],['で','de'],['ど','do'],['ば','ba'],['び','bi'],['ぶ','bu'],['べ','be'],['ぼ','bo'],['ぱ','pa'],['ぴ','pi'],['ぷ','pu'],['ぺ','pe'],['ぽ','po']],
+yoon:[['きゃ','kya'],['きゅ','kyu'],['きょ','kyo'],['ぎゃ','gya'],['ぎゅ','gyu'],['ぎょ','gyo'],['しゃ','sha'],['しゅ','shu'],['しょ','sho'],['じゃ','ja'],['じゅ','ju'],['じょ','jo'],['ちゃ','cha'],['ちゅ','chu'],['ちょ','cho'],['にゃ','nya'],['にゅ','nyu'],['にょ','nyo'],['ひゃ','hya'],['ひゅ','hyu'],['ひょ','hyo'],['びゃ','bya'],['びゅ','byu'],['びょ','byo'],['ぴゃ','pya'],['ぴゅ','pyu'],['ぴょ','pyo'],['みゃ','mya'],['みゅ','myu'],['みょ','myo'],['りゃ','rya'],['りゅ','ryu'],['りょ','ryo']]
 };
-function selectedKana(){
-const lessons=[...document.querySelectorAll('.lesson-check')].filter(c=>c.checked).map(c=>c.value);
-return lessons.flatMap(l=>KANA[l].map(([k,r])=>({kana:k,romaji:r,lesson:l})));
-}
-function shuffle(a){return [...a].sort(()=>Math.random()-0.5)}
+const $=id=>document.getElementById(id);
+function selectedKana(){return [...document.querySelectorAll('.lesson-check:checked')].flatMap(c=>KANA[c.value].map(([kana,romaji])=>({kana,romaji,lesson:c.value})));}
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+function updateCount(){const n=selectedKana().length;$('selectionCount').textContent=n?`${n} caratteri o combinazioni selezionati per entrambe le attività.`:'Seleziona almeno una lezione o un gruppo di suoni.';}
+document.querySelectorAll('.lesson-check').forEach(c=>c.addEventListener('change',updateCount));updateCount();
 let pool=[],quizItems=[],quizIndex=0,quizCorrect=0,answered=false,jokers=3,currentCorrect='',currentKana='',countdown=null;
-function startQuiz(){
-pool=selectedKana();
-if(!pool.length){alert('Seleziona almeno una lezione.');return;}
-quizItems=shuffle(pool).slice(0,Math.min(10,pool.length));quizIndex=0;quizCorrect=0;jokers=3;
-document.getElementById('useJoker').textContent=`Jolly: escludi 2 (${jokers})`;
-document.getElementById('quizPanel').classList.remove('hidden');
-renderQuiz();
-}
-function renderQuiz(){
-answered=false;const item=quizItems[quizIndex];
-document.getElementById('quizProgress').style.width=(quizIndex/quizItems.length*100)+'%';
-document.getElementById('quizFeedback').textContent='';
-document.getElementById('quizNext').classList.add('hidden');
-document.getElementById('styleCard').classList.add('hidden');
-const q=document.getElementById('quizQuestion'),a=document.getElementById('quizAnswers');
-a.innerHTML='';
-const askKana=Math.random()<.5;
-q.innerHTML=askKana?`<div class="quiz-kana">${item.kana}</div><p style="text-align:center;color:var(--muted)">Quale romaji corrisponde?</p>`:`<div class="quiz-kana">${item.romaji}</div><p style="text-align:center;color:var(--muted)">Quale hiragana corrisponde?</p>`;
-const field=askKana?'romaji':'kana';
-currentCorrect=item[field];currentKana=item.kana;
-const wrong=shuffle(pool.filter(x=>x[field]!==item[field])).slice(0,3);
-const options=shuffle([item,...wrong]);
-options.forEach(o=>{const b=document.createElement('button');b.className='answer';b.textContent=o[field];b.onclick=()=>check(b,o[field],item[field]);a.appendChild(b);});
-}
-function check(button,chosen,correct){
-if(answered)return;answered=true;
-[...document.querySelectorAll('.answer')].forEach(b=>b.disabled=true);
-if(chosen===correct){quizCorrect++;button.classList.add('correct');document.getElementById('quizFeedback').textContent='Corretto!';startCountdown();}
-else{button.classList.add('wrong');document.getElementById('quizFeedback').textContent=`Non è corretto: la risposta era ${correct}`;document.getElementById('quizNext').classList.remove('hidden');}
-if(['き','さ','そ','ふ'].includes(currentKana)){document.getElementById('styleCard').classList.remove('hidden');}
-}
-function startCountdown(){
-const btn=document.getElementById('quizNext');let t=5;btn.textContent=`Avanti (${t})`;btn.classList.remove('hidden');
-countdown=setInterval(()=>{t--;if(t<=0){clearInterval(countdown);countdown=null;nextQuestion();}else{btn.textContent=`Avanti (${t})`;}},1000);
-}
-function nextQuestion(){
-if(countdown){clearInterval(countdown);countdown=null;}
-quizIndex++;quizIndex>=quizItems.length?finishQuiz():renderQuiz();
-}
-function finishQuiz(){
-const score=quizCorrect,total=quizItems.length;
-document.getElementById('resultEmoji').textContent=score===total?'🏆':score>=7?'🎉':score>=5?'👍':'💪';
-document.getElementById('resultScore').textContent=`${score}/${total}`;
-document.getElementById('resultText').textContent=score===total?'Perfetto! Hai memorizzato molto bene queste sillabe.':score>=7?'Ottimo lavoro! Continua così.':score>=5?'Buon risultato: ripeti il quiz per consolidare le sillabe.':'Non preoccuparti: riprova e usa anche il tracing.';
-document.getElementById('quizPanel').classList.add('hidden');
-document.getElementById('resultPanel').classList.remove('hidden');
-}
-document.getElementById('quizNext').onclick=nextQuestion;
-document.getElementById('retryQuiz').onclick=startQuiz;
-let traceItems=[],traceIndex=0,drawing=false,lastX=0,lastY=0,strokes=[],sessionTraces=[];
-const canvas=document.getElementById('traceCanvas'),ctx=canvas.getContext('2d');
-function startTrace(){
-traceItems=shuffle(selectedKana());
-if(!traceItems.length){alert('Seleziona almeno una lezione.');return;}
-traceIndex=0;sessionTraces=[];document.getElementById('tracePanel').classList.remove('hidden');renderTrace();
-}
-function renderTrace(){
-const item=traceItems[traceIndex];
-document.getElementById('traceProgress').style.width=(traceIndex/traceItems.length*100)+'%';
-document.getElementById('traceKana').textContent=item.kana;
-document.getElementById('traceRomaji').textContent=item.romaji;
-document.getElementById('traceCounter').textContent=`${traceIndex+1}/${traceItems.length}`;
-document.getElementById('traceGuide').textContent=item.kana;
-resizeCanvas();clearCanvas();
-}
-function resizeCanvas(){const r=canvas.getBoundingClientRect(),d=devicePixelRatio||1;canvas.width=r.width*d;canvas.height=r.height*d;ctx.setTransform(d,0,0,d,0,0);ctx.lineWidth=7;ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle='#b91c1c';}
-function clearCanvas(){const r=canvas.getBoundingClientRect();ctx.clearRect(0,0,r.width,r.height);strokes=[];}
-function point(e){const r=canvas.getBoundingClientRect(),t=e.touches?e.touches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top};}
-canvas.addEventListener('pointerdown',e=>{drawing=true;const p=point(e);lastX=p.x;lastY=p.y;strokes.push([[p.x,p.y]]);ctx.beginPath();ctx.moveTo(p.x,p.y);canvas.setPointerCapture(e.pointerId);});
-canvas.addEventListener('pointermove',e=>{if(!drawing)return;const p=point(e);ctx.beginPath();ctx.moveTo(lastX,lastY);ctx.lineTo(p.x,p.y);ctx.stroke();lastX=p.x;lastY=p.y;strokes[strokes.length-1].push([p.x,p.y]);});
-canvas.addEventListener('pointerup',()=>drawing=false);
-canvas.addEventListener('pointercancel',()=>drawing=false);
-document.getElementById('traceClear').onclick=()=>{strokes=[];clearCanvas();};
-document.getElementById('traceReset').onclick=()=>{traceIndex=0;sessionTraces=[];renderTrace();};
-document.getElementById('traceNext').onclick=()=>{saveCurrentTrace();traceIndex++;traceIndex>=traceItems.length?alert('Hai completato tutte le sillabe selezionate.'):renderTrace();};
-function saveCurrentTrace(){
-const item=traceItems[traceIndex];
-sessionTraces.push({kana:item.kana,romaji:item.romaji,svg:buildSVG(item)});
-}
-function buildSVG(item){
-const paths=strokes.map(s=>`<path d="M ${s.map(p=>p.map(n=>n.toFixed(1)).join(' ')).join(' L ')}" fill="none" stroke="#b91c1c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>`).join('');
-return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="#fff"/><line x1="200" y1="0" x2="200" y2="400" stroke="#e5e7eb"/><line x1="0" y1="200" x2="400" y2="200" stroke="#e5e7eb"/><text x="200" y="260" font-size="260" text-anchor="middle" fill="#f3f4f6">${item.kana}</text>${paths}</svg>`;
-}
-function buildCompositeSVG(){
-const cols=4,cell=400,gap=20;
-const rows=Math.ceil(sessionTraces.length/cols);
-const width=cols*cell+(cols-1)*gap,height=rows*cell+(rows-1)*gap;
-let content='';
-sessionTraces.forEach((t,i)=>{const x=(i%cols)*(cell+gap),y=Math.floor(i/cols)*(cell+gap);content+=`<g transform="translate(${x},${y})">${t.svg.replace('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">','').replace('</svg>','')}</g>`;});
-const now=new Date();
-const dateStr=now.toLocaleString('it-IT');
-const name=document.getElementById('studentName').value.trim()||'Studente';
-return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height+80}" width="${width}" height="${height+80}"><rect width="${width}" height="${height+80}" fill="#fff"/><text x="20" y="40" font-size="28" font-weight="700" fill="#1f2937">Tracciati hiragana di ${name}</text><text x="20" y="70" font-size="18" fill="#6b7280">${dateStr}</text><g transform="translate(0,80)">${content}</g></svg>`;
-}
-document.getElementById('downloadSvg').onclick=()=>{
-if(!sessionTraces.length){alert('Nessun tracciato da scaricare.');return;}
-const svg=buildCompositeSVG();const blob=new Blob([svg],{type:'image/svg+xml'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='tracciati-hiragana.svg';a.click();
-};
-document.getElementById('clearAll').onclick=()=>{sessionTraces=[];alert('Tutti i tracciati della sessione sono stati cancellati.');};
-document.getElementById('sendMail').onclick=()=>{
-const name=document.getElementById('studentName').value.trim();
-if(!name){alert('Inserisci il tuo nome.');return;}
-if(!sessionTraces.length){alert('Non ci sono tracciati da inviare.');return;}
-const hour=new Date().getHours();
-const greeting=hour<11?'おはようございます':hour<18?'こんにちは':'こんばんは';
-const subject=encodeURIComponent(`Tracciati hiragana di ${name}`);
-const body=encodeURIComponent(`${greeting}, Sensei.\n\nIn allegato trovi i tracciati SVG delle sillabe esercitate da ${name}.\n\nGrazie.`);
-window.location.href=`mailto:chiaramonte.davide89@gmail.com?subject=${subject}&body=${body}`;
-};
-document.getElementById('startQuiz').onclick=startQuiz;
-document.getElementById('startTrace').onclick=startTrace;
-document.getElementById('useJoker').onclick=()=>{
-if(jokers<=0||answered)return;
-const buttons=[...document.querySelectorAll('.answer')].filter(b=>b.textContent!==currentCorrect&&!b.classList.contains('excluded'));
-shuffle(buttons).slice(0,2).forEach(b=>b.classList.add('excluded'));
-jokers--;document.getElementById('useJoker').textContent=`Jolly: escludi 2 (${jokers})`;
-};
-document.getElementById('showGuide').onchange=e=>{document.getElementById('traceBox').classList.toggle('no-guide',!e.target.checked);};
-window.addEventListener('resize',()=>{if(!document.getElementById('tracePanel').classList.contains('hidden'))resizeCanvas();});
-</script>
-</body>
-</html>
+function stopCountdown(){if(countdown!==null){clearInterval(countdown);countdown=null;}}
+function startQuiz(){const selected=selectedKana();if(!selected.length){alert('Seleziona almeno una lezione o un gruppo di suoni.');return;}stopCountdown();pool=selected;quizItems=shuffle(pool).slice(0,10);quizIndex=0;quizCorrect=0;jokers=3;$('resultPanel').classList.add('hidden');$('quizPanel').classList.remove('hidden');renderQuiz();}
+function renderQuiz(){answered=false;const item=quizItems[quizIndex];$('quizProgress').style.width=quizIndex/quizItems.length*100+'%';$('quizFeedback').textContent='';$('quizNext').classList.add('hidden');$('quizNext').textContent='Avanti';$('styleCard').classList.add('hidden');$('useJoker').textContent=`Jolly: escludi 2 (${jokers})`;$('useJoker').disabled=jokers<=0;
+let askKana=Math.random()<.5;
+// ji e zu corrispondono a due grafie: non chiedere una grafia unica senza contesto.
+if(pool.filter(x=>x.romaji===item.romaji).length>1)askKana=true;
+$('quizQuestion').innerHTML=`<div class="quiz-kana">${askKana?item.kana:item.romaji}</div><p style="text-align:center">${askKana?'Quale romaji corrisponde?':'Quale hiragana corrisponde?'}</p>`;
+const field=askKana?'romaji':'kana';currentCorrect=item[field];currentKana=item.kana;
+const wrong=shuffle([...new Set(pool.map(x=>x[field]))].filter(v=>v!==currentCorrect)).slice(0,3);$('quizAnswers').replaceChildren();shuffle([currentCorrect,...wrong]).forEach(value=>{const b=document.createElement('button');b.type='button';b.className='answer';b.textContent=value;b.onclick=()=>check(b,value);$('quizAnswers').appendChild(b);});}
+function check(button,value){if(answered)return;answered=true;document.querySelectorAll('.answer').forEach(b=>b.disabled=true);$('useJoker').disabled=true;$('quizNext').classList.remove('hidden');if(value===currentCorrect){quizCorrect++;button.classList.add('correct');$('quizFeedback').textContent='Corretto!';let t=5;$('quizNext').textContent=`Avanti (${t})`;countdown=setInterval(()=>{t--;if(t<=0){stopCountdown();nextQuestion();}else $('quizNext').textContent=`Avanti (${t})`;},1000);}else{button.classList.add('wrong');$('quizFeedback').textContent=`Non è corretto: la risposta era ${currentCorrect}`;}if(['き','さ','そ','ふ'].includes(currentKana))$('styleCard').classList.remove('hidden');if(['じ','ぢ','ず','づ'].includes(currentKana))$('quizFeedback').textContent+=' Nota: じ e ぢ si leggono ji; ず e づ si leggono zu nel giapponese standard.';}
+function nextQuestion(){if(!answered)return;stopCountdown();quizIndex++;quizIndex>=quizItems.length?finishQuiz():renderQuiz();}
+function finishQuiz(){$('quizProgress').style.width='100%';const ratio=quizCorrect/quizItems.length;$('resultEmoji').textContent=ratio===1?'🏆':ratio>=.7?'🎉':ratio>=.5?'👍':'💪';$('resultScore').textContent=`${quizCorrect}/${quizItems.length}`;$('resultText').textContent=ratio===1?'Perfetto!':ratio>=.7?'Ottimo lavoro! Continua così.':'Continua a esercitarti con quiz e tracing.';$('quizPanel').classList.add('hidden');$('resultPanel').classList.remove('hidden');}
+$('quizNext').onclick=nextQuestion;$('retryQuiz').onclick=startQuiz;$('startQuiz').onclick=startQuiz;
+$('useJoker').onclick=()=>{if(jokers<=0||answered)return;const wrong=[...document.querySelectorAll('.answer')].filter(b=>b.textContent!==currentCorrect&&!b.classList.contains('excluded'));if(!wrong.length)return;shuffle(wrong).slice(0,2).forEach(b=>{b.classList.add('excluded');b.disabled=true;});jokers--;$('useJoker').textContent=`Jolly: escludi 2 (${jokers})`;$('useJoker').disabled=jokers<=0;};
+let traceItems=[],traceIndex=0,drawing=false,lastX=0,lastY=0,strokes=[],sessionTraces=[];const canvas=$('traceCanvas'),ctx=canvas.getContext('2d');
+function guideSize(item){return item.kana.length>1?170:260;}
+function startTrace(){const selected=selectedKana();if(!selected.length){alert('Seleziona almeno una lezione o un gruppo di suoni.');return;}traceItems=shuffle(selected);traceIndex=0;sessionTraces=[];$('tracePanel').classList.remove('hidden');renderTrace();}
+function renderTrace(){const item=traceItems[traceIndex];$('traceProgress').style.width=traceIndex/traceItems.length*100+'%';$('traceKana').textContent=item.kana;$('traceRomaji').textContent=item.romaji;$('traceCounter').textContent=`${traceIndex+1}/${traceItems.length}`;$('traceGuide').textContent=item.kana;$('traceStatus').textContent='';$('traceNext').disabled=false;$('traceNext').textContent=traceIndex===traceItems.length-1?'Completa':'Prossima';strokes=[];drawing=false;resizeCanvas();}
+function repaint(){const r=canvas.getBoundingClientRect();ctx.clearRect(0,0,r.width,r.height);ctx.save();ctx.scale(r.width/400,r.height/400);ctx.lineWidth=6;ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle='#b91c1c';strokes.forEach(s=>{if(!s.length)return;ctx.beginPath();ctx.moveTo(...s[0]);s.slice(1).forEach(pt=>ctx.lineTo(...pt));ctx.stroke();});ctx.restore();}
+function resizeCanvas(){const r=canvas.getBoundingClientRect();if(!r.width)return;const d=window.devicePixelRatio||1;canvas.width=Math.round(r.width*d);canvas.height=Math.round(r.height*d);ctx.setTransform(d,0,0,d,0,0);$('traceGuide').style.fontSize=guideSize(traceItems[traceIndex])*r.width/400+'px';repaint();}
+function point(e){const r=canvas.getBoundingClientRect();return [400*(e.clientX-r.left)/r.width,400*(e.clientY-r.top)/r.height];}
+canvas.addEventListener('pointerdown',e=>{if($('traceNext').disabled)return;drawing=true;strokes.push([point(e)]);canvas.setPointerCapture(e.pointerId);});canvas.addEventListener('pointermove',e=>{if(!drawing)return;strokes[strokes.length-1].push(point(e));repaint();});['pointerup','pointercancel','lostpointercapture'].forEach(type=>canvas.addEventListener(type,()=>drawing=false));
+function clearCanvas(){drawing=false;strokes=[];repaint();}
+$('traceClear').onclick=clearCanvas;$('traceReset').onclick=()=>{if(!traceItems.length)return;traceIndex=0;sessionTraces=[];renderTrace();};
+function buildSVG(item){const paths=strokes.map(s=>`<path d="M ${s.map(pt=>pt.map(n=>n.toFixed(1)).join(' ')).join(' L ')}" fill="none" stroke="#b91c1c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>`).join('');const guide=$('showGuide').checked?`<text x="200" y="200" dominant-baseline="central" font-family="sans-serif" font-size="${guideSize(item)}" text-anchor="middle" fill="#e5e7eb">${item.kana}</text>`:'';return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="#fff"/><line x1="200" y1="0" x2="200" y2="400" stroke="#e5e7eb"/><line x1="0" y1="200" x2="400" y2="200" stroke="#e5e7eb"/>${guide}${paths}<text x="12" y="385" font-size="18">${item.kana} (${item.romaji})</text></svg>`;}
+function saveCurrentTrace(){const item=traceItems[traceIndex];sessionTraces[traceIndex]={kana:item.kana,romaji:item.romaji,svg:buildSVG(item)};}
+$('traceNext').onclick=()=>{if(!traceItems.length||$('traceNext').disabled)return;drawing=false;saveCurrentTrace();if(traceIndex===traceItems.length-1){$('traceProgress').style.width='100%';$('traceStatus').textContent='Hai completato tutti i caratteri e le combinazioni selezionati. Puoi scaricare i tracciati.';$('traceNext').disabled=true;}else{traceIndex++;renderTrace();}};
+function escapeXML(text){return text.replace(/[<>&"']/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&apos;'}[c]));}
+function buildCompositeSVG(){const traces=sessionTraces.filter(Boolean),cols=4,cell=400,gap=20,rows=Math.ceil(traces.length/cols),width=cols*cell+(cols-1)*gap,height=rows*cell+(rows-1)*gap;const content=traces.map((t,i)=>`<g transform="translate(${i%cols*(cell+gap)},${Math.floor(i/cols)*(cell+gap)})">${t.svg.replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'')}</g>`).join('');const name=escapeXML($('studentName').value.trim()||'Studente');return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height+80}" width="${width}" height="${height+80}"><rect width="${width}" height="${height+80}" fill="white"/><text x="20" y="35" font-size="28">Tracciati hiragana di ${name}</text><text x="20" y="65" font-size="18">${new Date().toLocaleString('it-IT')}</text><g transform="translate(0,80)">${content}</g></svg>`;}
+function capturePending(){if(traceItems.length&&strokes.length&&!$('traceNext').disabled)saveCurrentTrace();}
+$('downloadSvg').onclick=()=>{capturePending();if(!sessionTraces.some(Boolean)){alert('Nessun tracciato da scaricare.');return;}const url=URL.createObjectURL(new Blob([buildCompositeSVG()],{type:'image/svg+xml'}));const a=document.createElement('a');a.href=url;a.download='tracciati-hiragana.svg';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+$('clearAll').onclick=()=>{sessionTraces=[];clearCanvas();$('traceStatus').textContent='Tutti i tracciati della sessione sono stati cancellati.';};
+$('sendMail').onclick=()=>{const name=$('studentName').value.trim();if(!name){alert('Inserisci il tuo nome.');return;}capturePending();if(!sessionTraces.some(Boolean)){alert('Non ci sono tracciati da inviare.');return;}const hour=new Date().getHours(),greeting=hour<11?'おはようございます':hour<18?'こんにちは':'こんばんは';const subject=encodeURIComponent(`Tracciati hiragana di ${name}`),body=encodeURIComponent(`${greeting}, Sensei.\n\nTi invio i tracciati hiragana di ${name}.\n\n[Allega manualmente il file SVG scaricato dall’esercitazione.]\n\nGrazie.`);window.location.href=`mailto:chiaramonte.davide89@gmail.com?subject=${subject}&body=${body}`;};
+$('startTrace').onclick=startTrace;$('showGuide').onchange=e=>{$('traceBox').classList.toggle('no-guide',!e.target.checked);};window.addEventListener('resize',()=>{if(traceItems.length&&!$('tracePanel').classList.contains('hidden'))resizeCanvas();});
+</script></body></html>
